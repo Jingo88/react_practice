@@ -19033,20 +19033,84 @@ module.exports = require('./lib/React');
 },{"./lib/React":53}],159:[function(require,module,exports){
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var IndexPage = _react2.default.createClass({
-	displayName: "IndexPage",
+var IntroName = _react2.default.createClass({
+	displayName: "IntroName",
 
 	render: function render() {
+		var person = this.props.data;
 		return _react2.default.createElement(
 			"h1",
 			null,
-			" Welcome Page"
+			" Welcome to the Biography Updater",
+			person.name
+		);
+	}
+});
+
+var Bio = _react2.default.createClass({
+	displayName: "Bio",
+
+	render: function render() {
+		var person = this.props.data;
+		return _react2.default.createElement(
+			"div",
+			null,
+			_react2.default.createElement(
+				"h1",
+				null,
+				"Your Stats are Below"
+			),
+			_react2.default.createElement(
+				"ul",
+				null,
+				_react2.default.createElement(
+					"li",
+					null,
+					"Age: ",
+					person.age
+				),
+				_react2.default.createElement(
+					"li",
+					null,
+					"Height: ",
+					person.height
+				),
+				_react2.default.createElement(
+					"li",
+					null,
+					"Favorite Color: ",
+					person.favColor
+				),
+				_react2.default.createElement(
+					"li",
+					null,
+					"Eye Color: ",
+					person.eyes
+				),
+				_react2.default.createElement(
+					"li",
+					null,
+					"Vision: ",
+					person.vision
+				),
+				_react2.default.createElement(
+					"li",
+					null,
+					"Favorite Turtle: ",
+					person.favTurtle,
+					" "
+				)
+			)
 		);
 	}
 });
@@ -19058,17 +19122,13 @@ var App = _react2.default.createClass({
 		return _react2.default.createElement(
 			"div",
 			null,
-			_react2.default.createElement(
-				"h1",
-				null,
-				" THIS IS THE APP CLASS"
-			),
-			_react2.default.createElement(IndexPage, null)
+			_react2.default.createElement(IntroName, { data: this.props.person }),
+			_react2.default.createElement(Bio, { data: this.props.person })
 		);
 	}
 });
 
-module.exports = "App";
+exports.default = App;
 
 },{"react":158}],160:[function(require,module,exports){
 "use strict";
@@ -19087,6 +19147,16 @@ var _app2 = _interopRequireDefault(_app);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_app2.default, { name: "Jason" }), document.getElementById('homePage'));
+var person = {
+	name: "Jason",
+	age: 27,
+	height: "5 ft 9 in",
+	favColor: "Red",
+	eyes: "Black",
+	vision: "20/20",
+	favTurtle: "Raphael"
+};
+
+_reactDom2.default.render(_react2.default.createElement(_app2.default, { person: person }), document.getElementById('homePage'));
 
 },{"./app":159,"react":158,"react-dom":29}]},{},[160]);
