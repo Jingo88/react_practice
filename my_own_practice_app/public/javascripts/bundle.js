@@ -19048,10 +19048,11 @@ var IntroName = _react2.default.createClass({
 
 	render: function render() {
 		var person = this.props.data;
+
 		return _react2.default.createElement(
 			"h1",
 			null,
-			" Welcome to the Biography Updater",
+			" Welcome to the Biography Updater    ",
 			person.name
 		);
 	}
@@ -19062,6 +19063,7 @@ var Bio = _react2.default.createClass({
 
 	render: function render() {
 		var person = this.props.data;
+
 		return _react2.default.createElement(
 			"div",
 			null,
@@ -19111,6 +19113,33 @@ var Bio = _react2.default.createClass({
 					" "
 				)
 			)
+		);
+	}
+});
+
+var BioEdit = _react2.default.createClass({
+	displayName: "BioEdit",
+
+	getInitialState: function getInitialState() {
+		return;
+	},
+	nameChange: function nameChange(e) {
+		this.setState({ name: e.target.value });
+	},
+	handleSubmit: function handleSubmit(e) {
+		e.preventDefault;
+	},
+	render: function render() {
+		var person = this.props.data;
+		return _react2.default.createElement(
+			"form",
+			{ onSubmit: this.handleSubmit },
+			_react2.default.createElement("input", {
+				type: "text",
+				placeholder: person.name,
+				value: person.name,
+				onChange: this.nameChange
+			})
 		);
 	}
 });
