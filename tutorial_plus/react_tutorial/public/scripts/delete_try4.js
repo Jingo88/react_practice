@@ -41,8 +41,8 @@ var CommentRemove = React.createClass({
 
 var CommentList = React.createClass({
 	//blah is not being passed to the Comment Remove node because the data is coming from .map comment
-	blah: function(){
-		console.log("Beautiful")
+	my_remove: function(xyz){
+		console.log(xyz)
 	},
 	//this.props.data is the state data passed in?
 	//when console logging state data it is showing an empty array
@@ -50,18 +50,17 @@ var CommentList = React.createClass({
 		// console.log("we're in the Comment List Now")
 		// console.log(this.props.data)
 		var data = this.props.data
+		var comment_remove = this.props.my_remove
 		var eachComment = this.props.data.map(function(comment){
 			return(
 				<div>
 					<Comment author = {comment.author} key={comment.id}>
 						{comment.text}
 					</Comment>
-					<CommentRemove data={comment} />
+					<CommentRemove data={comment} onRemove={comment_remove} />
 				</div>
 			)
 		});
-		console.log("EACH COMMENT THIS PROPS COMMENT LIST")
-		console.log(eachComment)
 		return (
 			<div className="commentList">
 				{eachComment}
@@ -157,6 +156,7 @@ var CommentBox = React.createClass({
 			}.bind(this)
 		});
 	},
+	//add the remove function to the comment list render?
 	render : function(){
 		return(
 			<div>
