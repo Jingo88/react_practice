@@ -48,8 +48,10 @@ var CommentList = React.createClass({
 	//this.props.data is the state data passed in?
 	//when console logging state data it is showing an empty array
 	render: function(){
+		// starts as empty array but populates quickly
 		var data = this.props.data
-		var comment_remove = this.props.my_remove
+		// targets the my_remove function inside this class
+		var comment_remove = this.my_remove
 		console.log("THIS IS MY COMMENT REMOVE")
 		console.log(this) //Returns the actual fucking Constructor. WHAT THE FUCK
 		console.log(data) // Returns Empty Array
@@ -162,6 +164,9 @@ var CommentBox = React.createClass({
 			}.bind(this)
 		});
 	},
+	// remove_post: function(){
+		
+	// },
 	//add the remove function to the comment list render?
 	render : function(){
 		return(
