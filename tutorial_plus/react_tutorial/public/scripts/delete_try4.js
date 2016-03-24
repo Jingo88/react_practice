@@ -19,8 +19,9 @@ var Comment = React.createClass({
 
 var CommentRemove = React.createClass({
 	remove: function(comment){
-		console.log(comment)
-		console.log(this)
+		// console.log("WE ARE IN COMMENT REMOVE")
+		// console.log(comment)
+		// console.log(this)
 		return function(e){
 			e.preventDefault();
 			return this.props.onRemove(comment)
@@ -47,8 +48,6 @@ var CommentList = React.createClass({
 	//this.props.data is the state data passed in?
 	//when console logging state data it is showing an empty array
 	render: function(){
-		// console.log("we're in the Comment List Now")
-		// console.log(this.props.data)
 		var data = this.props.data
 		var comment_remove = this.props.my_remove
 		console.log("THIS IS MY COMMENT REMOVE")
@@ -56,15 +55,15 @@ var CommentList = React.createClass({
 		console.log(data) // Returns Empty Array
 		console.log(comment_remove) // Returns undefined
 		var eachComment = this.props.data.map(function(comment){
-			console.log("LOOK AT MY COOOOOOMENT")
-			console.log(this) // This returns undefined
-			console.log(comment) // This is the actual comment
+			// console.log("LOOK AT MY COOOOOOMENT")
+			// console.log(this) // This returns undefined
+			// console.log(comment) // This is the actual comment
 			return(
-				<div>
-					<Comment author = {comment.author} key={comment.id}>
+				<div key={comment.id}>
+					<Comment author = {comment.author}>
 						{comment.text}
 					</Comment>
-					<CommentRemove data={comment} onRemove={comment_remove} />
+					<CommentRemove data={comment} onRemove={comment_remove}/>
 				</div>
 			)
 		});
@@ -140,8 +139,8 @@ var CommentBox = React.createClass({
 	},
 	componentDidMount: function(){ //must name this "componentDidMount"
 		this.populateComments();
-		console.log("COMPONENT STATE STUFF")
-		console.log(this)
+		// console.log("COMPONENT STATE STUFF")
+		// console.log(this)
 		setInterval(this.populateComments, this.props.pollInterval);
 	},
 	handleCommentSubmit: function(comment){
