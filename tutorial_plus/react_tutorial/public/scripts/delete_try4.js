@@ -43,7 +43,7 @@ var CommentRemove = React.createClass({
 var CommentList = React.createClass({
 	//my_remove is not being recognized because data and props are still not defined yet
 	my_remove: function(xyz){
-		console.log(xyz)
+		this.props.removePost(xyz)
 	},
 	//this.props.data is the state data passed in?
 	//when console logging state data it is showing an empty array
@@ -164,15 +164,20 @@ var CommentBox = React.createClass({
 			}.bind(this)
 		});
 	},
-	// remove_post: function(){
-		
-	// },
-	//add the remove function to the comment list render?
+	removePost: function(commentPost){
+		var comments = this.state.data.filter(function(comment){
+			return commentPost.id !== comment.id
+		});
+
+		this.setState({
+			data: comments
+		});
+	},
 	render : function(){
 		return(
 			<div>
 				<h1> The Comment Box Holds All Your Shit </h1>
-				<CommentList data={this.state.data} />
+				<CommentList data={this.state.data} removePost={this.removePost}/>
 				<CommentForm onCommentSubmit={this.handleCommentSubmit} />
 			</div>
 		)
