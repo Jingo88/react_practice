@@ -40,7 +40,7 @@ var CommentRemove = React.createClass({
 })
 
 var CommentList = React.createClass({
-	//blah is not being passed to the Comment Remove node because the data is coming from .map comment
+	//my_remove is not being recognized because data and props are still not defined yet
 	my_remove: function(xyz){
 		console.log(xyz)
 	},
@@ -51,7 +51,14 @@ var CommentList = React.createClass({
 		// console.log(this.props.data)
 		var data = this.props.data
 		var comment_remove = this.props.my_remove
+		console.log("THIS IS MY COMMENT REMOVE")
+		console.log(this) //Returns the actual fucking Constructor. WHAT THE FUCK
+		console.log(data) // Returns Empty Array
+		console.log(comment_remove) // Returns undefined
 		var eachComment = this.props.data.map(function(comment){
+			console.log("LOOK AT MY COOOOOOMENT")
+			console.log(this) // This returns undefined
+			console.log(comment) // This is the actual comment
 			return(
 				<div>
 					<Comment author = {comment.author} key={comment.id}>
