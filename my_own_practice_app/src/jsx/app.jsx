@@ -5,7 +5,7 @@ var IntroName = React.createClass({
 		var person = this.props.data
 
 		return(
-			<h1> Welcome to the Biography Updater    {person.name}</h1>
+			<h1> Welcome to the Biography Updater    {person.heroName}</h1>
 		)
 	}
 })
@@ -56,7 +56,27 @@ var BioEdit = React.createClass({
 });
 
 var App = React.createClass({
+	//Setting our state to empty array
+	getInitialState: function(){
+		this.setState({data: []});
+	},
+	// Make an ajax call to the props that were passed in with ReactDOM Render
+	// That prop is apiUrl and represents an endpoint in our server.js
+	getHeroes: function(){
+		$.ajax({
+			url: this.props.url,
+			dataType: 'json',
+			cache: false,
+			success: function(data){
+				this.setState({data: data});
+			}.bind(this),
+			error: function(xhr, status, err){
+				console.error(this.props.url, status, err.toString());
+			}.bind(this);
+		})
+	},
 	render: function(){
+		console.log(this.props)
 		return(
 			<div>
 				<IntroName data={this.props.person} />

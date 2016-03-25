@@ -19053,7 +19053,7 @@ var IntroName = _react2.default.createClass({
 			"h1",
 			null,
 			" Welcome to the Biography Updater    ",
-			person.name
+			person.heroName
 		);
 	}
 });
@@ -19147,7 +19147,27 @@ var BioEdit = _react2.default.createClass({
 var App = _react2.default.createClass({
 	displayName: "App",
 
+	//Setting our state to empty array
+	getInitialState: function getInitialState() {
+		this.setState({ data: [] });
+	},
+	// Make an ajax call to the props that were passed in with ReactDOM Render
+	// That prop is apiUrl and represents an endpoint in our server.js
+	getHeroes: function getHeroes() {
+		$.ajax({
+			url: this.props.url,
+			dataType: 'json',
+			cache: false,
+			success: function (data) {
+				this.setState({ data: data });
+			}.bind(this),
+			error: function (xhr, status, err) {
+				console.error(this.props.url, status, err.toString());
+			}.bind(this)
+		});
+	},
 	render: function render() {
+		console.log(this.props);
 		return _react2.default.createElement(
 			"div",
 			null,
@@ -19186,6 +19206,6 @@ var person = {
 	favTurtle: "Raphael"
 };
 
-_reactDom2.default.render(_react2.default.createElement(_app2.default, { person: person }), document.getElementById('homePage'));
+_reactDom2.default.render(_react2.default.createElement(_app2.default, { apiUrl: "/api/heroes" }), document.getElementById('homePage'));
 
 },{"./app":159,"react":158,"react-dom":29}]},{},[160]);

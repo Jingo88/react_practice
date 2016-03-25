@@ -157,6 +157,7 @@ var CommentBox = React.createClass({
 			}.bind(this)
 		});
 	},
+	//add the remove function to the comment list render?
 	render : function(){
 		return(
 			<div>

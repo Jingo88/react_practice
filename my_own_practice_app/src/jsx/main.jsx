@@ -13,6 +13,6 @@ var person = {
 };
 
 ReactDOM.render(
-	<App person={person} />,
+	<App apiUrl='/api/heroes' />,
 	document.getElementById('homePage')
 )

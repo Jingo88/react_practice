@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "heroName": "Wolverine",
+        "realName": "James Howlett"
+    },
+    {
+        "id": 2,
+        "heroName": "Captain Marvel",
+        "realName": "Carol Danvers"
+    },
+    {
+        "id": 3,
+        "heroName": "Cyclops",
+        "realName": "Scott Summers"
+    },
+    {
+        "id": 4,
+        "heroName": "Phoenix",
+        "realName": "Jean Grey"
+    }
+]
