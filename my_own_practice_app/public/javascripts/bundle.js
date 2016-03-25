@@ -19043,103 +19043,94 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var IntroName = _react2.default.createClass({
-	displayName: "IntroName",
+var Hero = _react2.default.createClass({
+	displayName: "Hero",
 
 	render: function render() {
-		var person = this.props.data;
-
-		return _react2.default.createElement(
-			"h1",
-			null,
-			" Welcome to the Biography Updater    ",
-			person.heroName
-		);
-	}
-});
-
-var Bio = _react2.default.createClass({
-	displayName: "Bio",
-
-	render: function render() {
-		var person = this.props.data;
-
+		var hero = this.props.data;
 		return _react2.default.createElement(
 			"div",
 			null,
 			_react2.default.createElement(
-				"h1",
+				"h3",
 				null,
-				"Your Stats are Below"
-			),
-			_react2.default.createElement(
-				"ul",
-				null,
-				_react2.default.createElement(
-					"li",
-					null,
-					"Age: ",
-					person.age
-				),
-				_react2.default.createElement(
-					"li",
-					null,
-					"Height: ",
-					person.height
-				),
-				_react2.default.createElement(
-					"li",
-					null,
-					"Favorite Color: ",
-					person.favColor
-				),
-				_react2.default.createElement(
-					"li",
-					null,
-					"Eye Color: ",
-					person.eyes
-				),
-				_react2.default.createElement(
-					"li",
-					null,
-					"Vision: ",
-					person.vision
-				),
-				_react2.default.createElement(
-					"li",
-					null,
-					"Favorite Turtle: ",
-					person.favTurtle,
-					" "
-				)
+				"The secret identity of ",
+				hero.heroName,
+				" is ",
+				hero.realName
 			)
 		);
 	}
 });
 
-var BioEdit = _react2.default.createClass({
-	displayName: "BioEdit",
+var HeroList = _react2.default.createClass({
+	displayName: "HeroList",
+
+	render: function render() {
+		var heroes = this.props.data.map(function (hero) {
+			return _react2.default.createElement(
+				"div",
+				{ key: hero.id },
+				_react2.default.createElement(Hero, { data: hero })
+			);
+		});
+		return _react2.default.createElement(
+			"div",
+			null,
+			heroes
+		);
+	}
+});
+
+var HeroEdit = _react2.default.createClass({
+	displayName: "HeroEdit",
 
 	getInitialState: function getInitialState() {
-		return;
+		return { heroName: "", realName: "" };
 	},
-	nameChange: function nameChange(e) {
-		this.setState({ name: e.target.value });
+	heroNameChange: function heroNameChange(e) {
+		this.setState({ heroName: e.target.value });
+	},
+	realNameChange: function realNameChange(e) {
+		this.setState({ realName: e.target.value });
 	},
 	handleSubmit: function handleSubmit(e) {
 		e.preventDefault;
+		var heroName = this.state.heroName.trim();
+		var realName = this.state.realName.trim();
+
+		if (!heroName !== !realName) {
+			return;
+		}
+
+		this.props.heroSubmit({
+			heroName: heroName,
+			realName: realName
+		});
+		this.setState({ heroName: "", realName: "" });
 	},
 	render: function render() {
-		var person = this.props.data;
+
 		return _react2.default.createElement(
-			"form",
-			{ onSubmit: this.handleSubmit },
-			_react2.default.createElement("input", {
-				type: "text",
-				placeholder: person.name,
-				value: person.name,
-				onChange: this.nameChange
-			})
+			"div",
+			null,
+			_react2.default.createElement(
+				"form",
+				{ className: "heroForm", onSubmit: this.handleSubmit },
+				_react2.default.createElement("input", {
+					type: "text",
+					placeholder: "New Hero Name",
+					value: this.state.heroName,
+					onChange: this.heroNameChange
+				}),
+				_react2.default.createElement("input", {
+					type: "text",
+					placeholder: "New Hero Secret Identity",
+					value: this.state.realName,
+					onChange: this.realNameChange
+				}),
+				_react2.default.createElement("input", { type: "submit", value: "POST" })
+			)
 		);
 	}
 });
@@ -19149,30 +19140,57 @@ var App = _react2.default.createClass({
 
 	//Setting our state to empty array
 	getInitialState: function getInitialState() {
-		this.setState({ data: [] });
+		return { data: [] };
 	},
 	// Make an ajax call to the props that were passed in with ReactDOM Render
 	// That prop is apiUrl and represents an endpoint in our server.js
 	getHeroes: function getHeroes() {
 		$.ajax({
-			url: this.props.url,
+			url: this.props.apiUrl,
 			dataType: 'json',
 			cache: false,
 			success: function (data) {
 				this.setState({ data: data });
 			}.bind(this),
 			error: function (xhr, status, err) {
-				console.error(this.props.url, status, err.toString());
+				console.error(this.props.apiUrl, status, err.toString());
+			}.bind(this)
+		});
+	},
+	//must be named componentDidMount
+	componentDidMount: function componentDidMount() {
+		this.getHeroes();
+		setInterval(this.getHeroes, this.props.timerCalls);
+	},
+	handleSubmit: function handleSubmit(hero) {
+		console.log(hero);
+		var heroes = this.state.data;
+		heroesLength = this.state.data.length - 1;
+		hero.id = this.state.data[heroesLength]["id"] + 1;
+
+		var newHeroes = heroes.concat([hero]);
+
+		this.setState({ data: newHeroes });
+		$.ajax({
+			url: this.props.apiUrl,
+			dataType: 'json',
+			type: "POST",
+			data: hero,
+			success: function (data) {
+				this.setState({ data: data });
+			}.bind(this),
+			error: function (xhr, status, err) {
+				this.setState({ data: comments });
+				console.error(this.props.apiUrl, status, err.toString());
 			}.bind(this)
 		});
 	},
 	render: function render() {
-		console.log(this.props);
 		return _react2.default.createElement(
 			"div",
 			null,
-			_react2.default.createElement(IntroName, { data: this.props.person }),
-			_react2.default.createElement(Bio, { data: this.props.person })
+			_react2.default.createElement(HeroList, { data: this.state.data }),
+			_react2.default.createElement(HeroEdit, { heroSubmit: this.handleSubmit })
 		);
 	}
 });
@@ -19206,6 +19224,6 @@ var person = {
 	favTurtle: "Raphael"
 };
 
-_reactDom2.default.render(_react2.default.createElement(_app2.default, { apiUrl: "/api/heroes" }), document.getElementById('homePage'));
+_reactDom2.default.render(_react2.default.createElement(_app2.default, { apiUrl: "/api/heroes", timerCalls: 2000 }), document.getElementById('homePage'));
 
 },{"./app":159,"react":158,"react-dom":29}]},{},[160]);

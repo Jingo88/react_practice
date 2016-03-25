@@ -1,56 +1,79 @@
 import React from "react"
 
-var IntroName = React.createClass({
+var Hero = React.createClass({
 	render: function(){
-		var person = this.props.data
-
-		return(
-			<h1> Welcome to the Biography Updater    {person.heroName}</h1>
-		)
-	}
-})
-
-var Bio = React.createClass({
-	render: function(){
-		var person = this.props.data
-		
+		var hero = this.props.data
 		return(
 			<div>
-				<h1>Your Stats are Below</h1>
-				<ul>
-					<li>Age: {person.age}</li>
-					<li>Height: {person.height}</li>
-					<li>Favorite Color: {person.favColor}</li>
-					<li>Eye Color: {person.eyes}</li>
-					<li>Vision: {person.vision}</li>
-					<li>Favorite Turtle: {person.favTurtle} </li>
-				</ul>
+				<h3>The secret identity of {hero.heroName} is {hero.realName}</h3>
+			</div>
+		)	
+	}
+});
+
+var HeroList = React.createClass({
+	render: function(){
+		var heroes = this.props.data.map(function(hero){
+			return (
+				<div key={hero.id}>
+					<Hero data={hero}/>
+				</div>
+			)
+			
+		})
+		return (
+			<div>
+				{heroes}
 			</div>
 		)
 	}
 });
 
-var BioEdit = React.createClass({
+var HeroEdit = React.createClass({
 	getInitialState: function(){
-		return 
+		return {heroName: "", realName: ""};
 	},
-	nameChange: function(e){
-		this.setState({name: e.target.value})
+	heroNameChange: function(e){
+		this.setState({heroName: e.target.value})
+	},
+	realNameChange: function(e){
+		this.setState({realName: e.target.value})
 	},
 	handleSubmit: function(e){
 		e.preventDefault;
+		var heroName = this.state.heroName.trim();
+		var realName = this.state.realName.trim();
+
+		if (!heroName !== !realName){
+			return;
+		}
+
+		this.props.heroSubmit({
+			heroName: heroName,
+			realName: realName
+		});
+		this.setState({heroName: "", realName: ""})
 	},
 	render: function(){
-		var person = this.props.data
+		
 		return (
-			<form onSubmit={this.handleSubmit}>
+			<div>
+				<form className="heroForm" onSubmit={this.handleSubmit}>
 				<input
 					type="text"
-					placeholder = {person.name}
-					value = {person.name}
-					onChange = {this.nameChange}
+					placeholder="New Hero Name"
+					value={this.state.heroName}
+					onChange={this.heroNameChange}
 				/>
+				<input
+					type="text"
+					placeholder="New Hero Secret Identity"
+					value={this.state.realName}
+					onChange={this.realNameChange}
+				/>
+				<input type="submit" value="POST"/>
 			</form>
+			</div>
 		)
 	},
 });
@@ -58,29 +81,56 @@ var BioEdit = React.createClass({
 var App = React.createClass({
 	//Setting our state to empty array
 	getInitialState: function(){
-		this.setState({data: []});
+		return ({data: []});
 	},
 	// Make an ajax call to the props that were passed in with ReactDOM Render
 	// That prop is apiUrl and represents an endpoint in our server.js
 	getHeroes: function(){
 		$.ajax({
-			url: this.props.url,
+			url: this.props.apiUrl,
 			dataType: 'json',
 			cache: false,
 			success: function(data){
 				this.setState({data: data});
 			}.bind(this),
 			error: function(xhr, status, err){
-				console.error(this.props.url, status, err.toString());
-			}.bind(this);
+				console.error(this.props.apiUrl, status, err.toString());
+			}.bind(this)
 		})
 	},
+	//must be named componentDidMount
+	componentDidMount: function(){
+		this.getHeroes()
+		setInterval(this.getHeroes, this.props.timerCalls);
+	},
+	handleSubmit: function(hero){
+		console.log(hero)
+		var heroes = this.state.data;
+		heroesLength = this.state.data.length -1
+		hero.id = this.state.data[heroesLength]["id"] +1
+		
+		var newHeroes = heroes.concat([hero]);
+
+		this.setState({data: newHeroes});
+		$.ajax({
+			url: this.props.apiUrl,
+			dataType: 'json',
+			type: "POST",
+			data: hero,
+			success: function(data){
+				this.setState({data: data});
+			}.bind(this),
+			error: function(xhr, status, err){
+				this.setState({data: comments});
+				console.error(this.props.apiUrl, status, err.toString())
+			}.bind(this),
+		});
+	},
 	render: function(){
-		console.log(this.props)
 		return(
 			<div>
-				<IntroName data={this.props.person} />
-				<Bio data={this.props.person}/>
+				<HeroList data={this.state.data} />
+				<HeroEdit heroSubmit = {this.handleSubmit}/>
 			</div>
 		)
 	}
