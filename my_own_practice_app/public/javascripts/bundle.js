@@ -19031,32 +19031,32 @@ module.exports = validateDOMNesting;
 module.exports = require('./lib/React');
 
 },{"./lib/React":53}],159:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Hero = _react2.default.createClass({
-	displayName: "Hero",
+	displayName: 'Hero',
 
 	render: function render() {
 		var hero = this.props.data;
 		return _react2.default.createElement(
-			"div",
+			'div',
 			null,
 			_react2.default.createElement(
-				"h3",
+				'h3',
 				null,
-				"The secret identity of ",
+				'The secret identity of ',
 				hero.heroName,
-				" is ",
+				' is ',
 				hero.realName
 			)
 		);
@@ -19064,18 +19064,18 @@ var Hero = _react2.default.createClass({
 });
 
 var HeroList = _react2.default.createClass({
-	displayName: "HeroList",
+	displayName: 'HeroList',
 
 	render: function render() {
 		var heroes = this.props.data.map(function (hero) {
 			return _react2.default.createElement(
-				"div",
+				'div',
 				{ key: hero.id },
 				_react2.default.createElement(Hero, { data: hero })
 			);
 		});
 		return _react2.default.createElement(
-			"div",
+			'div',
 			null,
 			heroes
 		);
@@ -19083,10 +19083,10 @@ var HeroList = _react2.default.createClass({
 });
 
 var HeroEdit = _react2.default.createClass({
-	displayName: "HeroEdit",
+	displayName: 'HeroEdit',
 
 	getInitialState: function getInitialState() {
-		return { heroName: "", realName: "" };
+		return { heroName: '', realName: '' };
 	},
 	heroNameChange: function heroNameChange(e) {
 		this.setState({ heroName: e.target.value });
@@ -19095,10 +19095,9 @@ var HeroEdit = _react2.default.createClass({
 		this.setState({ realName: e.target.value });
 	},
 	handleSubmit: function handleSubmit(e) {
-		e.preventDefault;
+		e.preventDefault();
 		var heroName = this.state.heroName.trim();
 		var realName = this.state.realName.trim();
-
 		if (!heroName !== !realName) {
 			return;
 		}
@@ -19112,31 +19111,31 @@ var HeroEdit = _react2.default.createClass({
 	render: function render() {
 
 		return _react2.default.createElement(
-			"div",
+			'div',
 			null,
 			_react2.default.createElement(
-				"form",
-				{ className: "heroForm", onSubmit: this.handleSubmit },
-				_react2.default.createElement("input", {
-					type: "text",
-					placeholder: "New Hero Name",
+				'form',
+				{ className: 'heroForm', onSubmit: this.handleSubmit },
+				_react2.default.createElement('input', {
+					type: 'text',
+					placeholder: 'New Hero Name',
 					value: this.state.heroName,
 					onChange: this.heroNameChange
 				}),
-				_react2.default.createElement("input", {
-					type: "text",
-					placeholder: "New Hero Secret Identity",
+				_react2.default.createElement('input', {
+					type: 'text',
+					placeholder: 'New Hero Secret Identity',
 					value: this.state.realName,
 					onChange: this.realNameChange
 				}),
-				_react2.default.createElement("input", { type: "submit", value: "POST" })
+				_react2.default.createElement('input', { type: 'submit', value: 'POST' })
 			)
 		);
 	}
 });
 
 var App = _react2.default.createClass({
-	displayName: "App",
+	displayName: 'App',
 
 	//Setting our state to empty array
 	getInitialState: function getInitialState() {
@@ -19163,13 +19162,16 @@ var App = _react2.default.createClass({
 		setInterval(this.getHeroes, this.props.timerCalls);
 	},
 	handleSubmit: function handleSubmit(hero) {
+		console.log("WE ARE IN SUBMIT IN APP");
 		console.log(hero);
 		var heroes = this.state.data;
-		heroesLength = this.state.data.length - 1;
+		console.log(heroes);
+		var heroesLength = this.state.data.length - 1;
+		console.log(heroesLength);
 		hero.id = this.state.data[heroesLength]["id"] + 1;
 
 		var newHeroes = heroes.concat([hero]);
-
+		console.log(newHeroes);
 		this.setState({ data: newHeroes });
 		$.ajax({
 			url: this.props.apiUrl,
@@ -19187,7 +19189,7 @@ var App = _react2.default.createClass({
 	},
 	render: function render() {
 		return _react2.default.createElement(
-			"div",
+			'div',
 			null,
 			_react2.default.createElement(HeroList, { data: this.state.data }),
 			_react2.default.createElement(HeroEdit, { heroSubmit: this.handleSubmit })

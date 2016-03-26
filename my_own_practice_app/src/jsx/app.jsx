@@ -31,7 +31,7 @@ var HeroList = React.createClass({
 
 var HeroEdit = React.createClass({
 	getInitialState: function(){
-		return {heroName: "", realName: ""};
+		return {heroName: '', realName: ''};
 	},
 	heroNameChange: function(e){
 		this.setState({heroName: e.target.value})
@@ -40,10 +40,9 @@ var HeroEdit = React.createClass({
 		this.setState({realName: e.target.value})
 	},
 	handleSubmit: function(e){
-		e.preventDefault;
+		e.preventDefault();
 		var heroName = this.state.heroName.trim();
 		var realName = this.state.realName.trim();
-
 		if (!heroName !== !realName){
 			return;
 		}
@@ -104,13 +103,16 @@ var App = React.createClass({
 		setInterval(this.getHeroes, this.props.timerCalls);
 	},
 	handleSubmit: function(hero){
+		console.log("WE ARE IN SUBMIT IN APP")
 		console.log(hero)
 		var heroes = this.state.data;
-		heroesLength = this.state.data.length -1
+		console.log(heroes)
+		var heroesLength = this.state.data.length -1
+		console.log(heroesLength)
 		hero.id = this.state.data[heroesLength]["id"] +1
 		
 		var newHeroes = heroes.concat([hero]);
-
+		console.log(newHeroes)
 		this.setState({data: newHeroes});
 		$.ajax({
 			url: this.props.apiUrl,
@@ -125,12 +127,13 @@ var App = React.createClass({
 				console.error(this.props.apiUrl, status, err.toString())
 			}.bind(this),
 		});
+
 	},
 	render: function(){
 		return(
 			<div>
 				<HeroList data={this.state.data} />
-				<HeroEdit heroSubmit = {this.handleSubmit}/>
+				<HeroEdit heroSubmit={this.handleSubmit}/>
 			</div>
 		)
 	}
