@@ -4,29 +4,50 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.css">
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js
+	'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.js'></script>
 	<link rel="stylesheet" href="stylesheets/style.css">
 	<title>New Shit!</title>
 </head>
 <body>
-
-	<header>
-		<nav>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/about">About</a></li>
-				<li><a href="#">Projects</a></li>
-				<li><a href="#">Gallery</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-		</nav>
-	</header>
-
+<!-- Foundation 6 is supposedly lighter and faster than Foundation 5 -->
+<!-- HOWEVER that means their classes are also different and some of the Foundation 5 examples do not work with 6 -->
+<!-- How to include Foundation Grid system with React components? Is that possible? -->
+<div class="top-bar">
+  <div class="top-bar-title">
+    <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+      <span class="menu-icon dark" data-toggle></span>
+    </span>
+    <strong>Site Title</strong>
+  </div>
+  <div id="responsive-menu">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <a href="#">One</a>
+          <ul class="menu vertical">
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Two</a></li>
+        <li><a href="#">Three</a></li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><input type="search" placeholder="Search"></li>
+        <li><button type="button" class="button">Search</button></li>
+      </ul>
+    </div>
+  </div>
+</div>
 	<h1>React App Layout Page</h1>
 
 {{{body}}}
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.js'></script>
 <script src='javascripts/bundle.js'></script>
 
 </body>

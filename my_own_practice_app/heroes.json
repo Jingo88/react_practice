@@ -28,5 +28,20 @@
         "id": 6,
         "heroName": "Punisher",
         "realName": "Frank Castle"
+    },
+    {
+        "id": 7,
+        "heroName": "Scarlet Witch",
+        "realName": "Wanda Maximoff"
+    },
+    {
+        "id": 8,
+        "heroName": "Quicksilver",
+        "realName": "Pietro Maximoff"
+    },
+    {
+        "id": 9,
+        "heroName": "Deadpool",
+        "realName": "Wade Wilson"
     }
 ]
