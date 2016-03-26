@@ -19162,17 +19162,19 @@ var App = _react2.default.createClass({
 		setInterval(this.getHeroes, this.props.timerCalls);
 	},
 	handleSubmit: function handleSubmit(hero) {
-		console.log("WE ARE IN SUBMIT IN APP");
-		console.log(hero);
+		// Take the state data of this component that already exists
 		var heroes = this.state.data;
-		console.log(heroes);
-		var heroesLength = this.state.data.length - 1;
-		console.log(heroesLength);
-		hero.id = this.state.data[heroesLength]["id"] + 1;
+		// Grab the length to use for incrementing ID
+		var heroesLength = parseInt(this.state.data.length);
+		// Add a key called "id" to the hero passed in. Set it to the length +1
+		hero.id = this.state.data[heroesLength] + 1;
 
+		// Add the new hero to the existing array of heros
 		var newHeroes = heroes.concat([hero]);
-		console.log(newHeroes);
+		// Set the state data for this component
 		this.setState({ data: newHeroes });
+		// Make an AJAX POST request to the server. In this case it's an app.js file
+		// Remember you must use "bind" to bind the THIS from handle submit and not use THIS from within the ajax call
 		$.ajax({
 			url: this.props.apiUrl,
 			dataType: 'json',
