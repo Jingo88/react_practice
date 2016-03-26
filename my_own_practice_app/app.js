@@ -56,15 +56,17 @@ app.post('/api/heroes', function(req, res) {
       process.exit(1);
     }
     var heroes = JSON.parse(data);
+    console.log(heroes)
+    var lengthID = heroes.length -1
     // NOTE: In a real implementation, we would likely rely on a database or
     // some other approach (e.g. UUIDs) to ensure a globally unique id. We'll
     // treat Date.now() as unique-enough for our purposes.
-    var newComment = {
-      id: Date.now(),
+    var newHero = {
+      id: lengthID,
       heroName: req.body.heroName,
       realName: req.body.realName,
     };
-    heroes.push(newComment);
+    heroes.push(newHero);
     fs.writeFile(HEROES_FILE, JSON.stringify(heroes, null, 4), function(err) {
       if (err) {
         console.error(err);
