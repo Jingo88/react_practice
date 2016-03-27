@@ -106,7 +106,7 @@ var App = React.createClass({
 		// Take the state data of this component that already exists
 		var heroes = this.state.data;
 		// Grab the length to use for incrementing ID
-		var heroesLength = parseInt(this.state.data.length)
+		var heroesLength = heroes[heroes.length-1]['id']
 		// Add a key called "id" to the hero passed in. Set it to the length +1
 		hero.id = this.state.data[heroesLength]+1
 		

@@ -43,5 +43,10 @@
         "id": 9,
         "heroName": "Deadpool",
         "realName": "Wade Wilson"
+    },
+    {
+        "id": 10,
+        "heroName": "Nightcrawler",
+        "realName": "Kurt Wagner"
     }
 ]
