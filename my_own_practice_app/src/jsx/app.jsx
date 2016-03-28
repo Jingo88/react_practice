@@ -159,15 +159,50 @@ var App = React.createClass({
 		});
 	},
 	removeHeroApp: function(heroPost){
+
+		// Have to add a Delete Route to App.js 
+		// Then make the Ajax call send the shitty hero to the app.js
+		// on success you set state here so it works faster
+		// on the backend you still send data to the server and it will run the delete function
+		// With how the code is now it will only add to the database because we only have an adding endpoint
+
 		// Removes any of the heroes that have the same ID as heroPost
-		var heroes = this.state.data.filter(function(hero){
+		var stateLength = this.state.data.length
+		var newHeroes = this.state.data.filter(function(hero){
 			return heroPost.id !== hero.id
 		});
+		console.log(newHeroes)
+		console.log(newHeroes.length)
+
+		if (newHeroes.length === stateLength -1){
+			$.ajax({
+				url: this.props.apiUrl,
+				dataType: 'json',
+				cache: false,
+				method: "POST",
+				data: newHeroes,
+				success: function(data){
+					this.setState({data: data});
+				}.bind(this),
+				error: function(xhr, status, err){
+					console.error(this.props.apiUrl, status, err.toString());
+				}.bind(this)
+			})
+		}
+		// var stateData = this.state.data
+		// var heroesFunc = function(){
+		// 	var heroes = stateData.filter(function(hero){
+		// 		return heroPost.id !== hero.id
+		// 	})
+		// 	return heroes
+		// }
+		// var newHeroes = heroesFunc()
 
 		// Edits the App State data with the new "heroes" variable
-		this.setState({
-			data: heroes
-		});
+		// this.setState({
+		// 	data: heroesx
+		// });
+
 	},
 	render: function(){
 		return(
