@@ -12,7 +12,7 @@ var Hero = React.createClass({
 });
 
 var HeroRemove = React.createClass({
-	remove: function(){
+	remove: function(hero){
 		return function(e){
 			// Stop form or link from activating it's default behavior
 			e.preventDefault();

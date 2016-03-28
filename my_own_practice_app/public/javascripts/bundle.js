@@ -19066,7 +19066,7 @@ var Hero = _react2.default.createClass({
 var HeroRemove = _react2.default.createClass({
 	displayName: "HeroRemove",
 
-	remove: function remove() {
+	remove: function remove(hero) {
 		return function (e) {
 			// Stop form or link from activating it's default behavior
 			e.preventDefault();
