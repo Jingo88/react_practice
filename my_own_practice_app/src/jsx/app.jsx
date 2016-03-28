@@ -5,31 +5,58 @@ var Hero = React.createClass({
 		var hero = this.props.data
 		return(
 			<div>
-				<h3>The secret identity of {hero.heroName} is {hero.realName}</h3>
+				<li>The secret identity of {hero.heroName} is {hero.realName}</li>
 			</div>
 		)	
 	}
 });
 
-var HeroList = React.createClass({
+var HeroRemove = React.createClass({
+	remove: function(){
+		return function(e){
+			// Stop form or link from activating it's default behavior
+			e.preventDefault();
+			return this.props.listRemove(hero)
+			//Bind to this Class and not the this that happens at the event
+		}.bind(this)
+	},
 	render: function(){
+		return(
+			<div>
+				<a href data-id={this.props.data.id} className="remove-filter button round success" onClick={this.remove(this.props.data)}>Remove {this.props.data.heroName}</a>
+			</div>
+		)
+	}
+})
+
+var HeroList = React.createClass({
+	removeHeroList: function(hero){
+		this.props.appRemove(hero)
+	},
+	render: function(){
+		var removeFunction = this.removeHeroList
 		var heroes = this.props.data.map(function(hero){
 			return (
 				<div key={hero.id}>
-					<Hero data={hero}/>
+					<Hero data={hero} />
+					
+					<HeroRemove data = {hero}listRemove={removeFunction}/>
 				</div>
 			)
 			
 		})
 		return (
 			<div>
-				{heroes}
+				<h2> Indexed Heroes </h2>
+				<ul>
+					{heroes}
+				</ul>
 			</div>
 		)
 	}
 });
 
-var HeroEdit = React.createClass({
+var HeroCreate = React.createClass({
 	getInitialState: function(){
 		return {heroName: '', realName: ''};
 	},
@@ -57,6 +84,7 @@ var HeroEdit = React.createClass({
 		
 		return (
 			<div>
+				<h2> Enter a New Hero in the Index </h2>
 				<form className="heroForm" onSubmit={this.handleSubmit}>
 				<input
 					type="text"
@@ -130,11 +158,22 @@ var App = React.createClass({
 			}.bind(this),
 		});
 	},
+	removeHeroApp: function(heroPost){
+		// Removes any of the heroes that have the same ID as heroPost
+		var heroes = this.state.data.filter(function(hero){
+			return heroPost.id !== hero.id
+		});
+
+		// Edits the App State data with the new "heroes" variable
+		this.setState({
+			data: heroes
+		});
+	},
 	render: function(){
 		return(
 			<div>
-				<HeroList data={this.state.data} />
-				<HeroEdit heroSubmit={this.handleSubmit}/>
+				<HeroList data={this.state.data} appRemove = {this.removeHeroApp}/>
+				<HeroCreate heroSubmit={this.handleSubmit}/>
 			</div>
 		)
 	}

@@ -19031,59 +19031,98 @@ module.exports = validateDOMNesting;
 module.exports = require('./lib/React');
 
 },{"./lib/React":53}],159:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Hero = _react2.default.createClass({
-	displayName: 'Hero',
+	displayName: "Hero",
 
 	render: function render() {
 		var hero = this.props.data;
 		return _react2.default.createElement(
-			'div',
+			"div",
 			null,
 			_react2.default.createElement(
-				'h3',
+				"li",
 				null,
-				'The secret identity of ',
+				"The secret identity of ",
 				hero.heroName,
-				' is ',
+				" is ",
 				hero.realName
 			)
 		);
 	}
 });
 
-var HeroList = _react2.default.createClass({
-	displayName: 'HeroList',
+var HeroRemove = _react2.default.createClass({
+	displayName: "HeroRemove",
 
+	remove: function remove() {
+		return function (e) {
+			// Stop form or link from activating it's default behavior
+			e.preventDefault();
+			return this.props.listRemove(hero);
+			//Bind to this Class and not the this that happens at the event
+		}.bind(this);
+	},
 	render: function render() {
-		var heroes = this.props.data.map(function (hero) {
-			return _react2.default.createElement(
-				'div',
-				{ key: hero.id },
-				_react2.default.createElement(Hero, { data: hero })
-			);
-		});
 		return _react2.default.createElement(
-			'div',
+			"div",
 			null,
-			heroes
+			_react2.default.createElement(
+				"a",
+				{ href: true, "data-id": this.props.data.id, className: "remove-filter button round success", onClick: this.remove(this.props.data) },
+				"Remove ",
+				this.props.data.heroName
+			)
 		);
 	}
 });
 
-var HeroEdit = _react2.default.createClass({
-	displayName: 'HeroEdit',
+var HeroList = _react2.default.createClass({
+	displayName: "HeroList",
+
+	removeHeroList: function removeHeroList(hero) {
+		this.props.appRemove(hero);
+	},
+	render: function render() {
+		var removeFunction = this.removeHeroList;
+		var heroes = this.props.data.map(function (hero) {
+			return _react2.default.createElement(
+				"div",
+				{ key: hero.id },
+				_react2.default.createElement(Hero, { data: hero }),
+				_react2.default.createElement(HeroRemove, { data: hero, listRemove: removeFunction })
+			);
+		});
+		return _react2.default.createElement(
+			"div",
+			null,
+			_react2.default.createElement(
+				"h2",
+				null,
+				" Indexed Heroes "
+			),
+			_react2.default.createElement(
+				"ul",
+				null,
+				heroes
+			)
+		);
+	}
+});
+
+var HeroCreate = _react2.default.createClass({
+	displayName: "HeroCreate",
 
 	getInitialState: function getInitialState() {
 		return { heroName: '', realName: '' };
@@ -19111,31 +19150,36 @@ var HeroEdit = _react2.default.createClass({
 	render: function render() {
 
 		return _react2.default.createElement(
-			'div',
+			"div",
 			null,
 			_react2.default.createElement(
-				'form',
-				{ className: 'heroForm', onSubmit: this.handleSubmit },
-				_react2.default.createElement('input', {
-					type: 'text',
-					placeholder: 'New Hero Name',
+				"h2",
+				null,
+				" Enter a New Hero in the Index "
+			),
+			_react2.default.createElement(
+				"form",
+				{ className: "heroForm", onSubmit: this.handleSubmit },
+				_react2.default.createElement("input", {
+					type: "text",
+					placeholder: "New Hero Name",
 					value: this.state.heroName,
 					onChange: this.heroNameChange
 				}),
-				_react2.default.createElement('input', {
-					type: 'text',
-					placeholder: 'New Hero Secret Identity',
+				_react2.default.createElement("input", {
+					type: "text",
+					placeholder: "New Hero Secret Identity",
 					value: this.state.realName,
 					onChange: this.realNameChange
 				}),
-				_react2.default.createElement('input', { type: 'submit', value: 'POST' })
+				_react2.default.createElement("input", { type: "submit", value: "POST" })
 			)
 		);
 	}
 });
 
 var App = _react2.default.createClass({
-	displayName: 'App',
+	displayName: "App",
 
 	//Setting our state to empty array
 	getInitialState: function getInitialState() {
@@ -19189,12 +19233,23 @@ var App = _react2.default.createClass({
 			}.bind(this)
 		});
 	},
+	removeHeroApp: function removeHeroApp(heroPost) {
+		// Removes any of the heroes that have the same ID as heroPost
+		var heroes = this.state.data.filter(function (hero) {
+			return heroPost.id !== hero.id;
+		});
+
+		// Edits the App State data with the new "heroes" variable
+		this.setState({
+			data: heroes
+		});
+	},
 	render: function render() {
 		return _react2.default.createElement(
-			'div',
+			"div",
 			null,
-			_react2.default.createElement(HeroList, { data: this.state.data }),
-			_react2.default.createElement(HeroEdit, { heroSubmit: this.handleSubmit })
+			_react2.default.createElement(HeroList, { data: this.state.data, appRemove: this.removeHeroApp }),
+			_react2.default.createElement(HeroCreate, { heroSubmit: this.handleSubmit })
 		);
 	}
 });
