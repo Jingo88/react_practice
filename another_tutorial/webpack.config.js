@@ -1,3 +1,17 @@
+// Run webpack in the terminal with "webpack"
+// If you want webpack to keep watching for changes run "webpack -w"
+// If you are shipping to production you can run "webpack -p"
+
+// Require the webpack plugin
+// Set the directory and template you will be targeting
+// Where specifically are you injecting this file
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+	template: __dirname + '/app/index.html',
+	filename: 'index.html',
+	inject: 'body'
+});
+
 module.exports = {
 // Tell object where to enter. This is the root JS file
 	entry: [
@@ -10,7 +24,8 @@ module.exports = {
 			// 2 - Which directories to include or exclude from transforming(exclude node modules)
 			// 3 - The specific loader we want to run
 		loaders: [
-			{test:/\.coffee$/, exclude: /node_modules/, loader: "coffee-loader"}
+		// The babel loader can be used because we set the preset to "react" in a .babelrc file
+			{test:/\.js$/, exclude: /node_modules/, loader: "babel-loader"}
 		]
 	},
 	// Where should webpack output the new transformed code
@@ -20,6 +35,7 @@ module.exports = {
 		filename: "index_bundle.js",
 		path: __dirname + '/dist'
 	},
-}
+	plugins: [HTMLWebpackPluginConfig]
+};
 
 

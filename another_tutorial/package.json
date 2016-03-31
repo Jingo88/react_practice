@@ -10,5 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^2.2.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.7.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.5.0",
+    "html-webpack-plugin": "^2.15.0"
   }
 }
