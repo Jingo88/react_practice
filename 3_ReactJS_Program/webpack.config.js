@@ -5,7 +5,7 @@
 // Require the webpack plugin
 // Set the directory and template you will be targeting
 // Where specifically are you injecting this file
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 	template: __dirname + '/app/index.html',
 	filename: 'index.html',
@@ -32,9 +32,10 @@ module.exports = {
 		// filename = name of the newly created file
 		// path = the current directory and then some
 	output: {
-		filename: "index_bundle.js",
-		path: __dirname + '/dist'
+		path: __dirname + '/dist',
+		filename: "index_bundle.js"
 	},
+	// plugins takes the config at the top. Will inject the transformed code into the body of the html
 	plugins: [HTMLWebpackPluginConfig]
 };
 
