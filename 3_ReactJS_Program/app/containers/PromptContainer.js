@@ -1,20 +1,25 @@
+// bring in react library
 var React = require('react')
+// bring in container component
 var Prompt = require('../components/Prompt');
 
 var PromptContainer=React.createClass({
 	contextTypes : {
 		router: React.PropTypes.object.isRequired
 	},
+	// Our initial state will have a blank username
 	getInitialState: function(){
 		return{
 			username:''
 		}
 	},
+	// We want to edit the state to change username to the inputed value
 	handleUpdateUser: function(e){
 		this.setState({
 			username: e.target.value
 		});
 	},
+	// build a callback that will do shit when the user submits their answer
 	handleSubmitUser: function(e){
 		console.log(this.state)
 		e.preventDefault();
@@ -36,6 +41,10 @@ var PromptContainer=React.createClass({
 			this.context.router.push('/playerTwo/'+this.state.username)
 		}
 	},
+	// render the Prompt component
+	// Remember to break down your components between container and presentation
+	// It is best practice that when passing a value as a prop to a child we pass them as "On" something
+	// That prop will reference a callback in the parent component that will be prefixed with the "Handle"
 	render: function(){
 		return(
 			<Prompt 

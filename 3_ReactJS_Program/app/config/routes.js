@@ -1,9 +1,13 @@
+// bring in react
 var React = require('react');
+// Try to stay away from requiring the entire react-router
+// Maybe use the es6 way of import {Router, Route, IndexRoute} from 'react-router'
 var ReactRouter = require('react-router');
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
 var hashHistory = ReactRouter.hashHistory;
+// bring in your container components
 var PromptContainer = require('../containers/PromptContainer');
 var ConfirmBattleContainer = require('../containers/ConfirmBattleContainer')
 
