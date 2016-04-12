@@ -1,6 +1,7 @@
 var React = require("react")
 var PropTypes = React.PropTypes;
 var styles = require('../styles');
+var Link = require('react-router').Link;
 
 function puke(obj){
 	return <pre>{JSON.stringify(obj, null, '')}</pre>
@@ -26,11 +27,17 @@ function ConfirmBattle(props){
 
 				<div className="col-sm-8 col-sm-offset-2">
 					<div className="col-sm-12" style={styles.space}>
-						INITIATE BATTLE BUTTON
+						<button type='button' className='btn btn-lg btn-success' onClick={props.onInitiateBattle}>
+							INITIATE BATTLE
+						</button>
 					</div>
 
 					<div className="col-sm-12" style={styles.space}>
-						LINK to PLAYER ONE
+						<Link to='/playerOne'>
+							<button type='button' className='btn btn-lg btn-danger'> 
+								Reselect Players
+							</button>
+						</Link>
 					</div> 
 				</div>
 			</div>
