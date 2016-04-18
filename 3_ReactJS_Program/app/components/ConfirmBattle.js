@@ -7,6 +7,7 @@ var UserDetailsWrapper = require('./UserDetailsWrapper');
 var UserDetails = require('./UserDetails');
 
 function ConfirmBattle (props) {
+	console.log(props)
   return props.isLoading === true
     ? <p>LOADING</p>
     : <div className="jumbotron col-sm-12 text-center" style={styles.transparentBg}>
