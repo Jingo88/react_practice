@@ -9,21 +9,27 @@ var ConfirmBattleContainer = React.createClass({
 	contextTypes: {
 		router: React.PropTypes.object.isRequired
 	},
+	// The initial state will have an empty array
 	getInitialState: function(){
 		return{
 			isLoading: true,
-			playersInfo: []
+			playersInfo: [],
 		}
 	},
+	// Once the data is loaded PlayersInfo gets a full array of information
 	componentDidMount: function(){
 		var query = this.props.location.query;
-		githubHelpers.getPlayersInfo([query.playerOne, query.playerTwo]).then(function(players){
+		githubHelpers.getPlayersInfo([query.playerOne, query.playerTwo])
+			.then(function(players){
 				this.setState({
 					isLoading: false,
 					playersInfo: [players[0], players[1]]
 				})
-		}.bind(this))//this is binding the "this" from earlier where the query is, because inside the anon CB "this" is different
+		}.bind(this))
 	},
+	//this is binding the "this" from earlier where the query is, because inside the anon CB "this" is different
+	// we want to push that playerInfo data to the new "/results" route
+	// We define what we are pushing to the results route in the "state" parameter
 	handleInitiateBattle: function(){
 		this.context.router.push({
 			pathname: '/results',
