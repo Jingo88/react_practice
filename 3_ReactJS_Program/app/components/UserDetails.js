@@ -1,3 +1,7 @@
+// This is a presentational component
+// Therefore we will use a stateless functional component
+// Remember, if your component is just a render method and there is no state you can create it as a Stateless Functional Component using "function" and passing in props as an argument. Instead of using React.createClass
+
 var React = require('react');
 var PropTypes = React.PropTypes
 
@@ -17,6 +21,9 @@ function UserDetails (user) {
     </div>
   )
 }
+
+// Proptypes that are required and not required
+// Shape allows us to have prop types based on the key values in your object
 
 UserDetails.propTypes = {
   score: PropTypes.number,
