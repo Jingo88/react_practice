@@ -8,7 +8,7 @@ function puke(obj){
 
 function Results(props){
 	return(
-		<div> Results </div>
+		<div> {puke(props)} </div>
 	)
 }
 
