@@ -25,7 +25,8 @@ module.exports = {
 			// 3 - The specific loader we want to run
 		loaders: [
 		// The babel loader can be used because we set the preset to "react" in a .babelrc file
-			{test:/\.js$/, exclude: /node_modules/, loader: "babel-loader"}
+			{test:/\.js$/, exclude: /node_modules/, loader: "babel-loader"},
+			{test: /\.css$/, loader: "style-loader!css-loader"}
 		]
 	},
 	// Where should webpack output the new transformed code
