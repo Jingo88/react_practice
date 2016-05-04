@@ -1,5 +1,5 @@
 var React = require('react')
-
+var styles = require('../styles/styles');
 // var Home = React.createClass({
 // 	return : function(){
 // 		render (
@@ -10,7 +10,9 @@ var React = require('react')
 
 function Home(props){
 	return(
-		<h1> WE ARE HOME STATELESS FUNCTIONAL COMPONENT</h1>
+		<div style={styles.container}>
+			<h1> WE ARE HOME STATELESS FUNCTIONAL COMPONENT</h1>
+		</div>
 	)
 }
 
