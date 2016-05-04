@@ -7,6 +7,7 @@ var HelloWorld = React.createClass({
 			<div> 
 				<h1>ERRO WARLD </h1>
 				<h4> Time for some weather shit </h4>
+				{this.props.children}
 			</div>
 		)
 	}
