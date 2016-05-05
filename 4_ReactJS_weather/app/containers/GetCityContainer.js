@@ -4,6 +4,9 @@ var weatherHelpers = require('../utils/weatherHelpers')
 
 
 var GetCityContainer = React.createClass({
+	contextTypes: {
+		router : React.PropTypes.object.isRequired
+	},
 	getDefaultProps: function(){
 		return {
 			direction: 'column'
@@ -15,6 +18,9 @@ var GetCityContainer = React.createClass({
 		}
 	},
 	handleSubmitCity: function(){
+		this.context.router.push({
+			pathname: '/forecast/' + this.state.city
+		})
 		console.log(
 			weatherHelpers.getCurrentWeather(this.state.city)
 		)

@@ -40,7 +40,7 @@ function getCurrentWeather(city){
 
 	return axios.get(url)
 		.then(function(data){
-				console.log(data)	
+				console.log(data.data)	
 				return data
 			})
 		.catch(function(err){
@@ -54,7 +54,7 @@ function getFiveDayWeather(city){
 
 	return axios.get(url)
 		.then(function(data){
-				console.log(data)	
+				console.log(data.data)	
 			})
 		.catch(function(err){
 			console.warn("Error with the getCurrentWeather" + err)
