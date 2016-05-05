@@ -18,6 +18,9 @@ var GetCityContainer = React.createClass({
 		console.log(
 			weatherHelpers.getCurrentWeather(this.state.city)
 		)
+		console.log(
+			weatherHelpers.getFiveDayWeather(this.state.city)
+		)
 	},
 	handleUpdateCity: function(event){
 		this.setState({

@@ -1,18 +1,73 @@
 var axios = require('axios');
 
 
+// USING TYLER'S API KEY (THE GUY WHO WROTE THE TUTORIAL)
 
-var weatherHelp = {
-	weatherKey : weatherKey,
-	getCurrentWeather: function(city){
-			return axios.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&type=accurate&APPID=" + weatherKey)
-	},
-	getFiveDayWeather: function(city){
-			return axios.get("http://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&type=accurate&APPID=" + weatherKey)
+var _baseURL = "http://api.openweathermap.org/data/2.5/weather?q="
+var _APIKEY = "b714ec74bbab5650795063cb0fdf5fbe"
+
+
+// weather api http://api.openweathermap.org/data/2.5/weather?q=newyork&type=accurate&APPID=b714ec74bbab5650795063cb0fdf5fbe
+//What are their params, we can change this later with more documentation research
+
+function getQueryStringData(city){
+	return {
+		q : city,
+		type: 'accurate',
+		APPID: _APIKEY,
+		cnt: 5
 	}
 }
 
-module.exports = weatherhelp;
+// invoked in the makeWeatherURL function
+// takes the data above and joins all the params together
+// This will be dynamic in the future if we want to make changes
+function prepRouteParams(queryStringData){
+	return Object.keys(queryStringData)
+		.map(function(key){
+			return key + '=' + encodeURIComponent(queryStringData[key]);
+		}).join('&')
+}
+
+function makeWeatherURL(type, queryStringData){
+	return _baseURL + type + '?' + prepRouteParams(queryStringData);
+}
+
+function getCurrentWeather(city){
+	var qString = getQueryStringData(city)
+	var url = makeWeatherURL("weather", qString)
+	console.log(url)
+
+	return axios.get(url)
+		.then(function(data){
+				console.log(data)	
+				return data
+			})
+		.catch(function(err){
+			console.warn("Error with the getCurrentWeather" + err)
+		})
+}
+
+function getFiveDayWeather(city){
+	var qString = getQueryStringData(city)
+	var url = makeWeatherURL("forecast/daily", qString)
+
+	return axios.get(url)
+		.then(function(data){
+				console.log(data)	
+			})
+		.catch(function(err){
+			console.warn("Error with the getCurrentWeather" + err)
+		})	
+}
+
+
+module.exports = {
+	getCurrentWeather: getCurrentWeather,
+	getFiveDayWeather: getFiveDayWeather
+};
+
+
 
 
 //FS MODULE NOT WORKING WHYYYYY
