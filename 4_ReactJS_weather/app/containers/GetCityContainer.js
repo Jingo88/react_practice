@@ -1,5 +1,6 @@
 var React = require('react');
 var GetCity = require('../components/GetCity');
+var weatherHelpers = require('../utils/weatherHelpers')
 
 
 var GetCityContainer = React.createClass({
@@ -14,7 +15,9 @@ var GetCityContainer = React.createClass({
 		}
 	},
 	handleSubmitCity: function(){
-		console.log(this.state.city)
+		console.log(
+			weatherHelpers.getCurrentWeather(this.state.city)
+		)
 	},
 	handleUpdateCity: function(event){
 		this.setState({

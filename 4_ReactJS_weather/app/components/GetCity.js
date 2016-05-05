@@ -1,4 +1,5 @@
 var React = require('react')
+var weatherHelpers = require('../utils/weatherHelpers')
 // var styles = require('../styles/styles');
 
 var styles = {
@@ -45,7 +46,7 @@ function getStyles (props) {
 function GetCity(props){
 	return (
 		<div>
-			
+
 			<InputField style = {getStyles(props)}
 				onUpdateCity = {props.onUpdateCity}
 				city = {props.city}/>
