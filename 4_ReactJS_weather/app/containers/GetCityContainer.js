@@ -1,6 +1,6 @@
 var React = require('react');
 var GetCity = require('../components/GetCity');
-var weatherHelpers = require('../utils/weatherHelpers')
+// var weatherHelpers = require('../utils/weatherHelpers')
 
 
 var GetCityContainer = React.createClass({
@@ -17,16 +17,18 @@ var GetCityContainer = React.createClass({
 			city: ''
 		}
 	},
-	handleSubmitCity: function(){
+	handleSubmitCity: function(event){
+		event.preventDefault()
+		
 		this.context.router.push({
 			pathname: '/forecast/' + this.state.city
 		})
-		console.log(
-			weatherHelpers.getCurrentWeather(this.state.city)
-		)
-		console.log(
-			weatherHelpers.getFiveDayWeather(this.state.city)
-		)
+		// console.log(
+		// 	weatherHelpers.getCurrentWeather(this.state.city)
+		// )
+		// console.log(
+		// 	weatherHelpers.getFiveDayWeather(this.state.city)
+		// )
 	},
 	handleUpdateCity: function(event){
 		this.setState({
