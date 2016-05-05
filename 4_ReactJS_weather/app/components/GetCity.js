@@ -45,6 +45,7 @@ function getStyles (props) {
 function GetCity(props){
 	return (
 		<div>
+			
 			<InputField style = {getStyles(props)}
 				onUpdateCity = {props.onUpdateCity}
 				city = {props.city}/>

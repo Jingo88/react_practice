@@ -16,17 +16,12 @@ var styles = {
 		width: '100%',
 		color: 'white'
 	},
-	header: {
-		fontSize: 45,
-		color: "#FEFFF8",
-		fontWeight: 100,
-	},
 }
 
 function Home(props){
 	return(
 		<div style={styles.container}>
-			<h1> WE ARE HOME STATELESS FUNCTIONAL COMPONENT</h1>
+			<h1>Get YoSelf The Weather!</h1>
 			<GetCityContainer />
 		</div>
 	)
