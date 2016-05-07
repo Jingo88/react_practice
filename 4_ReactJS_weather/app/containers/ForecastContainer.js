@@ -17,7 +17,8 @@ var ForecastContainer = React.createClass({
 		this.getForecast(nextProps.routeParams.city)
 	},
 	getForecast : function(city){
-		weatherHelpers.getCurrentWeather(city)
+		// weatherHelpers.getCurrentWeather(city)
+		weatherHelpers.getFiveDayWeather(city)
 			.then(function(data){
 				this.setState({
 					isLoading: false,

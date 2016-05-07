@@ -3,7 +3,7 @@ var axios = require('axios');
 
 // USING TYLER'S API KEY (THE GUY WHO WROTE THE TUTORIAL)
 
-var _baseURL = "http://api.openweathermap.org/data/2.5/weather?q="
+var _baseURL = "http://api.openweathermap.org/data/2.5/"
 var _APIKEY = "b714ec74bbab5650795063cb0fdf5fbe"
 
 
@@ -36,11 +36,11 @@ function makeWeatherURL(type, queryStringData){
 function getCurrentWeather(city){
 	var qString = getQueryStringData(city)
 	var url = makeWeatherURL("weather", qString)
-	console.log(url)
+	// console.log(url)
 
 	return axios.get(url)
 		.then(function(data){
-				console.log(data.data)	
+				// console.log(data.data)	
 				return data
 			})
 		.catch(function(err){
@@ -52,9 +52,12 @@ function getFiveDayWeather(city){
 	var qString = getQueryStringData(city)
 	var url = makeWeatherURL("forecast/daily", qString)
 
+	console.log('GET FIVE DAY SHIT')
+	console.log(url)
 	return axios.get(url)
 		.then(function(data){
-				console.log(data.data)	
+				// console.log(data.data)
+				return data	
 			})
 		.catch(function(err){
 			console.warn("Error with the getCurrentWeather" + err)
