@@ -1,13 +1,24 @@
 var React = require('react');
+var conversionHelpers = require('../utils/conversionHelpers');
 
 function EachDay(props){
 	console.log('IS EACH DAY BEING HIT?')
 	console.log(props.data)
+	var maxTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.max)))
+	var minTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.min)))
+	var dayTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.day)))
+	var eveTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.eve)))
 	return(
 		<ul>
 			<li>Description: {props.data.weather[0].description}</li>
+			<li>Main: {props.data.weather[0].main}</li>
+				<li>Daytime Temp: {dayTemp}</li>
+				<li>Evening Temp: {eveTemp}</li>
+				<li>Max Temp: {maxTemp}</li>
+				<li>Min Temp: {minTemp}</li>
 			<li>Clouds: {props.data.clouds}</li>
 			<li>Humidity: {props.data.humidity}</li>
+			<li>Pressure: {props.data.pressure}</li>
 		</ul>
 	)
 }
