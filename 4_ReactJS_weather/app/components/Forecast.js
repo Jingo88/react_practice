@@ -1,15 +1,26 @@
 var React = require('react');
 
+function EachDay(props){
+	console.log('IS EACH DAY BEING HIT?')
+	return(
+		<ul>
+			<li>Description: {props.weather[0].description}</li>
+			<li>Clouds: {props.clouds}</li>
+			<li>Humidity: {props.humidity}</li>
+		</ul>
+	)
+}
 
-function EachDayWeather(props){
-	console.log(props.data)
-	var fiveWeather = props.data
-	return fiveWeather.map(function(day){
-		console.log(day.weather[0].description)
-		
-	})
-		
-	
+function EachDayMap(props){
+	console.log(props)
+	console.log('WE ARE IN EACH DAY MAP')
+	return (
+		<div>
+			{props.data.map(function(day){
+				<EachDay data = {day}/>
+			})}
+		</div>
+	)
 }
 
 function FiveDayWeather(props){
@@ -23,7 +34,7 @@ function FiveDayWeather(props){
 				<li>Main: {props.data[0].weather[0].main}</li>
 				<li>Humidity: {props.data[0].humidity}</li>
 			</ul>
-			<EachDayWeather data={props.data}/>
+			<EachDayMap data={props.data}/>
 		</div>
 	)
 }
