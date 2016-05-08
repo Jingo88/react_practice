@@ -2,22 +2,21 @@ var React = require('react');
 
 function EachDay(props){
 	console.log('IS EACH DAY BEING HIT?')
+	console.log(props.data)
 	return(
 		<ul>
-			<li>Description: {props.weather[0].description}</li>
-			<li>Clouds: {props.clouds}</li>
-			<li>Humidity: {props.humidity}</li>
+			<li>Description: {props.data.weather[0].description}</li>
+			<li>Clouds: {props.data.clouds}</li>
+			<li>Humidity: {props.data.humidity}</li>
 		</ul>
 	)
 }
 
 function EachDayMap(props){
-	console.log(props)
-	console.log('WE ARE IN EACH DAY MAP')
 	return (
 		<div>
 			{props.data.map(function(day){
-				<EachDay data = {day}/>
+				return <EachDay data = {day}/>
 			})}
 		</div>
 	)
