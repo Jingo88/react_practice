@@ -9,7 +9,7 @@ var styles = {
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-		height: '100%',
+		minHeight: '100vh',
 		width: '100%',
 		color: 'white'
 	},
@@ -20,17 +20,32 @@ var styles = {
 		fontWeight: "700",
 		fontSize: "1.3em",
 		fontDecoration: "underline"
+	},
+	imageSize: {
+		maxWidth: "100%"
 	}
 }
 
-
 	// weather description
-	// "light rain"
-	// "clear sky"
-	// "overcast clouds"
-	// "broken clouds"
-	// "heavy intensity rain"
-	// ""
+	// "light rain" === light_rain
+	// "moderate rain" === moderate_rain
+	// "heavy intensity rain" === heavy_rain
+	// "clear sky" === clear_sky
+	// "overcast clouds" === overcast_clouds
+	// "broken clouds" === broken_clouds
+	// "scattered clouds" === scattered_clouds
+	// "light snow" === light_snow
+
+function TheIcon(props){
+	var description = props.data
+	var theSource = description.replace(" ", "_")
+	console.log(theSource)
+	return (
+		<div>
+			<img src={"./app/images/" + theSource + ".png"} style={styles.imageSize}/>
+		</div>
+	)
+}
 
 function TheDate(props){
 	console.log(props)
@@ -43,21 +58,17 @@ function EachDay(props){
 	console.log(props)	
 	var maxTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.max)))
 	var minTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.min)))
-	var dayTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.day)))
-	var eveTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.eve)))
 	
 	return(
 		<div>
 			<ul style={styles.something} className="col s3">
 				<TheDate data={props.data}/>
 				<li>Description: {props.data.weather[0].description}</li>
-				<li>Main: {props.data.weather[0].main}</li>
-					<li>Daytime Temp: {dayTemp}</li>
-					<li>Evening Temp: {eveTemp}</li>
-					<li>Max Temp: {maxTemp}</li>
-					<li>Min Temp: {minTemp}</li>
+				<li>Max Temp: {maxTemp}</li>
+				<li>Min Temp: {minTemp}</li>
 				<li>Clouds: {props.data.clouds}</li>
 				<li>Humidity: {props.data.humidity}%</li>
+				<TheIcon data = {props.data.weather[0].description}/>
 			</ul>
 		</div>
 	)

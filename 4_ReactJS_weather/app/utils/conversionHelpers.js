@@ -10,11 +10,7 @@ var days = [
 
 function kelToFar(temp){
 	return (temp * (9/5) - 459.67)
-}
-
-function iconProducer(description){
-
-}
+}	
 
 function getDate(unixTime){
 	var date = new Date(unixTime * 1000);
@@ -28,6 +24,5 @@ function getDate(unixTime){
 
 module.exports = {
 	kelToFar : kelToFar,
-	iconProducer : iconProducer,
-	getDate : getDate
+	getDate : getDate,
 }
