@@ -14,15 +14,20 @@ var styles = {
 		color: 'white'
 	},
 	something: {
-		display: "inline-block"
+		display: "inline-block",
 	}	
 }
 
 function EachDay(props){
+	//have to use props.data.dt to grab date time IN FUCKING UNIX BLAHHHH
+	//how to convert UNIX time to standard time
+	//how to break that down to days
+	console.log(props.data.dt)	
 	var maxTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.max)))
 	var minTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.min)))
 	var dayTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.day)))
 	var eveTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.eve)))
+	var date = conversionHelpers.getDate(props.data.dt)
 	return(
 		<ul style={styles.something} className="col s3">
 			<li>Description: {props.data.weather[0].description}</li>
@@ -34,6 +39,7 @@ function EachDay(props){
 			<li>Clouds: {props.data.clouds}</li>
 			<li>Humidity: {props.data.humidity}%</li>
 			<li>Pressure: {props.data.pressure}</li>
+			<li>Date: {date}</li>
 		</ul>
 	)
 }
