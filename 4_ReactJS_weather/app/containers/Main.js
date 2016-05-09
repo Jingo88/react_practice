@@ -16,9 +16,9 @@ var Main = React.createClass({
 			    <div className="nav-wrapper">
 			      <a href="#" className="brand-logo">Weather Logo</a>
 			      <ul id="nav-mobile" className="right hide-on-med-and-down">
-			        <li><a href="sass.html">Home</a></li>
-			        <li><a href="badges.html">Something Else</a></li>
-			        <li><a href="collapsible.html">Other Thing</a></li>
+			        <li><a href="/">Home</a></li>
+			        <li><a href="/">Something Else</a></li>
+			        <li><a href="/">Other Thing</a></li>
 			      </ul>
 			    </div>
 			  </nav>
