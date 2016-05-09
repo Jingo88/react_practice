@@ -3,8 +3,8 @@ var conversionHelpers = require('../utils/conversionHelpers');
 
 var styles = {
 	container: {
-		backgroundSize: 'cover',
-		backgroundImage: "url('app/images/simple.jpg')",
+		// backgroundSize: 'cover',
+		// backgroundImage: "url('app/images/simple.jpg')",
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
@@ -24,7 +24,7 @@ function EachDay(props){
 	var dayTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.day)))
 	var eveTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.eve)))
 	return(
-		<ul style={styles.something}>
+		<ul style={styles.something} className="col s3">
 			<li>Description: {props.data.weather[0].description}</li>
 			<li>Main: {props.data.weather[0].main}</li>
 				<li>Daytime Temp: {dayTemp}</li>
@@ -40,7 +40,7 @@ function EachDay(props){
 
 function EachDayMap(props){
 	return (
-		<div>
+		<div className="row">
 			{props.data.map(function(day){
 				return <EachDay data = {day}/>
 			})}
@@ -50,7 +50,7 @@ function EachDayMap(props){
 
 function FiveDayWeather(props){
 	return (
-		<div>
+		<div className="container">
 			<EachDayMap data={props.data}/>
 		</div>
 	)
