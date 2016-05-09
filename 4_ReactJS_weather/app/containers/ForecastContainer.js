@@ -29,7 +29,6 @@ var ForecastContainer = React.createClass({
 	render: function(){
 		return(
 			<div>
-				<h1> WE ARE IN THE FORECAST CONTAINER </h1>
 				<Forecast
 					city = {this.props.routeParams.city}
 					isLoading = {this.state.isLoading}

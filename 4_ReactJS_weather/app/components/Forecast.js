@@ -1,15 +1,30 @@
 var React = require('react');
 var conversionHelpers = require('../utils/conversionHelpers');
 
+var styles = {
+	container: {
+		backgroundSize: 'cover',
+		backgroundImage: "url('app/images/simple.jpg')",
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+		height: '100%',
+		width: '100%',
+		color: 'white'
+	},
+	something: {
+		display: "inline-block"
+	}	
+}
+
 function EachDay(props){
-	console.log('IS EACH DAY BEING HIT?')
-	console.log(props.data)
 	var maxTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.max)))
 	var minTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.min)))
 	var dayTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.day)))
 	var eveTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.eve)))
 	return(
-		<ul>
+		<ul style={styles.something}>
 			<li>Description: {props.data.weather[0].description}</li>
 			<li>Main: {props.data.weather[0].main}</li>
 				<li>Daytime Temp: {dayTemp}</li>
@@ -17,7 +32,7 @@ function EachDay(props){
 				<li>Max Temp: {maxTemp}</li>
 				<li>Min Temp: {minTemp}</li>
 			<li>Clouds: {props.data.clouds}</li>
-			<li>Humidity: {props.data.humidity}</li>
+			<li>Humidity: {props.data.humidity}%</li>
 			<li>Pressure: {props.data.pressure}</li>
 		</ul>
 	)
@@ -36,14 +51,6 @@ function EachDayMap(props){
 function FiveDayWeather(props){
 	return (
 		<div>
-			<h3>{props.data.name}</h3>
-			<ul>
-				<li>Clouds: {props.data[0].clouds}</li>
-				<li>Rain: {props.data[0].rain}</li>
-				<li>Description: {props.data[0].weather[0].description}</li>
-				<li>Main: {props.data[0].weather[0].main}</li>
-				<li>Humidity: {props.data[0].humidity}</li>
-			</ul>
 			<EachDayMap data={props.data}/>
 		</div>
 	)
@@ -53,8 +60,8 @@ function Forecast(props){
 	console.log(props.forecastData.data)
 	return props.isLoading === true
 		? <div> LOADING </div>
-		: <div> 
-				<h3>Forecast Component BLAH BLAH </h3>
+		: <div style={styles.container}> 
+				<h1>{props.forecastData.data.city.name}</h1>
 				<FiveDayWeather data = {props.forecastData.data.list}/>
 			</div>
 }
