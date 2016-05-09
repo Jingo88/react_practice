@@ -6,8 +6,6 @@ var styles = {
 	//flexDirection - flexible items are displayed vertically as a column
 	//display:flex - all flexible items be the same length
 	container: {
-		// backgroundSize: 'cover',
-		// backgroundImage: "url('app/images/simple.jpg')",
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
