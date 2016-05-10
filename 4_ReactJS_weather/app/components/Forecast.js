@@ -66,7 +66,7 @@ function EachDay(props){
 			<ul 
 				style={styles.something} 
 				className="col s3">
-				<button onClick={props.handleClick}> blah blah </button>
+				<button onClick={props.onDetailClick}> blah blah </button>
 				<TheDate data={props.data}/>
 				<li>Description: {props.data.weather[0].description}</li>
 				<li>Max Temp: {maxTemp}</li>
@@ -86,7 +86,7 @@ function EachDayMap(props){
 				return (
 					<EachDay 
 						data={day}
-						handleClick={props.handleClick.bind(null, day)}/>
+						onDetailClick={props.onDetailClick.bind(null, day)}/>
 				)
 			})}
 		</div>
@@ -98,7 +98,7 @@ function FiveDayWeather(props){
 		<div className="container">
 			<EachDayMap 
 				data={props.data}
-				handleClick = {props.handleClick}/>
+				onDetailClick = {props.onDetailClick}/>
 		</div>
 	)
 }
@@ -111,7 +111,7 @@ function Forecast(props){
 				<h1>{props.forecastData.data.city.name}</h1>
 				<FiveDayWeather 
 					data={props.forecastData.data.list}
-					handleClick={props.handleClick}/>
+					onDetailClick={props.onDetailClick}/>
 			</div>
 }
 
