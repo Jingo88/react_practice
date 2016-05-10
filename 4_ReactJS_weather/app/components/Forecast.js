@@ -40,7 +40,7 @@ var styles = {
 function TheIcon(props){
 	var description = props.data
 	var theSource = description.replace(" ", "_")
-	console.log(theSource)
+	
 	return (
 		<div>
 			<img src={"./app/images/" + theSource + ".png"} style={styles.imageSize}/>
@@ -49,20 +49,24 @@ function TheIcon(props){
 }
 
 function TheDate(props){
-	console.log(props)
+	
 	var date = conversionHelpers.getDate(props.data.dt)
 	
 	return <h6 style={styles.smallh6}>{date}</h6>
 }
 
 function EachDay(props){
-	console.log(props)	
+
 	var maxTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.max)))
 	var minTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.min)))
-	
+	console.log(props.handleClick)
+
 	return(
 		<div>
-			<ul style={styles.something} className="col s3">
+			<ul 
+				style={styles.something} 
+				className="col s3">
+				<button onClick={props.handleClick}> blah blah </button>
 				<TheDate data={props.data}/>
 				<li>Description: {props.data.weather[0].description}</li>
 				<li>Max Temp: {maxTemp}</li>
@@ -79,7 +83,11 @@ function EachDayMap(props){
 	return (
 		<div className="row">
 			{props.data.map(function(day){
-				return <EachDay data = {day}/>
+				return (
+					<EachDay 
+						data={day}
+						handleClick={props.handleClick.bind(null, day)}/>
+				)
 			})}
 		</div>
 	)
@@ -88,7 +96,9 @@ function EachDayMap(props){
 function FiveDayWeather(props){
 	return (
 		<div className="container">
-			<EachDayMap data={props.data}/>
+			<EachDayMap 
+				data={props.data}
+				handleClick = {props.handleClick}/>
 		</div>
 	)
 }
@@ -99,7 +109,9 @@ function Forecast(props){
 		? <div> LOADING </div>
 		: <div style={styles.container}> 
 				<h1>{props.forecastData.data.city.name}</h1>
-				<FiveDayWeather data = {props.forecastData.data.list}/>
+				<FiveDayWeather 
+					data={props.forecastData.data.list}
+					handleClick={props.handleClick}/>
 			</div>
 }
 
