@@ -59,21 +59,17 @@ function EachDay(props){
 
 	var maxTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.max)))
 	var minTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.min)))
-	console.log(props.handleClick)
 
 	return(
 		<div>
-			<ul 
-				style={styles.something} 
-				className="col s3">
-				<button onClick={props.onDetailClick}> blah blah </button>
+			<ul style={styles.something} className="col s12 m3 l3">
 				<TheDate data={props.data}/>
 				<li>Description: {props.data.weather[0].description}</li>
 				<li>Max Temp: {maxTemp}</li>
 				<li>Min Temp: {minTemp}</li>
-				<li>Clouds: {props.data.clouds}</li>
 				<li>Humidity: {props.data.humidity}%</li>
 				<TheIcon data = {props.data.weather[0].description}/>
+				<button onClick={props.onDetailClick}> More Details </button>
 			</ul>
 		</div>
 	)

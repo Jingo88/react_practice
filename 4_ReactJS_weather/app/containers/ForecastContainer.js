@@ -30,9 +30,10 @@ var ForecastContainer = React.createClass({
 			}.bind(this))
 	},
 	handleDetailClick: function(weather){
-		console.log('handleeesss')
+		// console.log('WE ARE CLICKING SHIT')
+		// console.log(this.state.forecastData.data.city)
 		this.context.router.push({
-			pathname: '/detail/' + this.props.routeParams.city,
+			pathname: '/detail/' + this.state.forecastData.data.city.name,
 			state: {
 				weather: weather
 			}
