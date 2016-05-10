@@ -28,27 +28,40 @@ var styles = {
 	}
 }
 
+function TheIcon(props){
+	var description = props.data
+	var theSource = description.replace(" ", "_")
+	
+	return (
+		<div>
+			<img src={"./app/images/" + theSource + ".png"} style={styles.imageSize}/>
+		</div>
+	)
+}
+
 function TheDate(props){
 	var date = conversionHelpers.getDate(props.data)
-	return <h6>{date}</h6>
+	return <h4>{date}</h4>
 }
 
 function DetailUI(props){
 	console.log(props)
 	return(
-		<ul>
+		<div>
 			<TheDate data={props.data.dt} />
-			<li>Max Temp: </li>
-			<li>Min Temp: </li>
-			<li>Humidity: </li>
-			<li>Pressure: </li>
-			<li>Speed: </li>
-		</ul>
+			<ul>
+				<li>Max Temp: {props.data.temp.max}</li>
+				<li>Min Temp: {props.data.temp.min}</li>
+				<li>Humidity: {props.data.humidity}</li>
+				<li>Pressure: {props.data.pressure}</li>
+				<li>Speed: {props.data.speed}</li>
+			</ul>
+			<TheIcon data={props.data.weather[0].description}/>
+		</div>
 	)
 }
 
 function Detail(props){
-	console.log(props)
 	return (
 		<div style={styles.container}>
 			<h1>{props.city}</h1>

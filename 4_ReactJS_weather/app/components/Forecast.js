@@ -14,7 +14,7 @@ var styles = {
 		width: '100%',
 		color: 'white'
 	},
-	something: {
+	dayList: {
 		display: "inline-block",
 	},
 	smallh6 : {
@@ -62,7 +62,7 @@ function EachDay(props){
 
 	return(
 		<div>
-			<ul style={styles.something} className="col s12 m3 l3">
+			<ul style={styles.dayList} className="col s12 m3 l3">
 				<TheDate data={props.data}/>
 				<li>Description: {props.data.weather[0].description}</li>
 				<li>Max Temp: {maxTemp}</li>
