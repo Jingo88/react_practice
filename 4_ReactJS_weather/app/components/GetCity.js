@@ -1,4 +1,5 @@
 var React = require('react')
+var PropTypes = React.PropTypes
 var weatherHelpers = require('../utils/weatherHelpers')
 // var styles = require('../styles/styles');
 
@@ -46,7 +47,6 @@ function getStyles (props) {
 function GetCity(props){
 	return (
 		<div>
-
 			<InputField style = {getStyles(props)}
 				onUpdateCity = {props.onUpdateCity}
 				city = {props.city}/>
@@ -56,6 +56,13 @@ function GetCity(props){
 			</Button>
 		</div>
 	)
+}
+
+GetCity.PropTypes = {
+	direction : PropTypes.string.isRequired,
+	onSubmitCity : PropTypes.func.isRequired,
+	onUpdateCity : PropTypes.func.isRequired,
+	city : PropTypes.string.isRequired
 }
 
 module.exports = GetCity;
