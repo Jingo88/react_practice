@@ -26,6 +26,9 @@ var ForecastContainer = React.createClass({
 				})
 			}.bind(this))
 	},
+	getDetailForecast: function(){
+
+	},
 	render: function(){
 		return(
 			<div>

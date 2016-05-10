@@ -1,4 +1,5 @@
 var React = require('react');
+var PropTypes = React.PropTypes
 var conversionHelpers = require('../utils/conversionHelpers');
 
 var styles = {
@@ -101,5 +102,12 @@ function Forecast(props){
 				<FiveDayWeather data = {props.forecastData.data.list}/>
 			</div>
 }
+
+Forecast.PropTypes = {
+	city: PropTypes.string.isRequired,
+	isLoading: PropTypes.bool.isRequired,
+	forecastData: PropTypes.object.isRequired
+}
+
 
 module.exports = Forecast;
