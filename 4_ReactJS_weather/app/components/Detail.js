@@ -90,6 +90,7 @@ function DetailUI(props){
 }
 
 function Detail(props){
+	console.log(props)
 	return (
 		<div 
 			style={styles.wrapping}
@@ -97,6 +98,9 @@ function Detail(props){
 			<DetailUI 
 				data={props.weather}
 				city={props.city}/>
+			<button
+				onClick = {props.onFiveClick.bind(props.city)}
+				className = "waves-effect waves-light btn">BACK TO FIVE DAY SCHEDULE</button>
 		</div>
 	)
 }

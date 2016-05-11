@@ -52,8 +52,6 @@ function getFiveDayWeather(city){
 	var qString = getQueryStringData(city)
 	var url = makeWeatherURL("forecast/daily", qString)
 
-	console.log('GET FIVE DAY SHIT')
-	console.log(url)
 	return axios.get(url)
 		.then(function(data){
 				// console.log(data.data)
