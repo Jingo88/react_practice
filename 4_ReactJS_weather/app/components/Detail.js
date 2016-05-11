@@ -5,18 +5,22 @@ var conversionHelpers = require('../utils/conversionHelpers');
 
 var styles = {
 	container: {
-		// backgroundSize: 'cover',
+		// backgroundSize: '100% 95vh',
 		// backgroundImage: "url('app/images/simple.jpg')",
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-		minHeight: '100vh',
+		minHeight: '95vh',
 		width: '100%',
-		color: 'white'
+		color: 'white',
+		fontSize: "1.3em"
 	},
 	something: {
 		display: "inline-block",
+	},
+	heading: {
+		textDecoration: "underline",
 	},
 	smallh6 : {
 		fontWeight: "700",
@@ -64,7 +68,7 @@ function DetailUI(props){
 function Detail(props){
 	return (
 		<div style={styles.container}>
-			<h1>{props.city}</h1>
+			<h1 style={styles.heading}>{props.city}</h1>
 			<DetailUI data={props.weather}/>
 		</div>
 	)
