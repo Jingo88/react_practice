@@ -57,21 +57,26 @@ function TheDate(props){
 
 function EachDay(props){
 
-	var maxTemp = conversionHelpers.kelToFar(props.data.temp.max)
-	var minTemp = conversionHelpers.kelToFar(props.data.temp.min)
+	var maxTempF = conversionHelpers.kelToFar(props.data.temp.max)
+	var minTempF = conversionHelpers.kelToFar(props.data.temp.min)
+
+	var maxTempC = conversionHelpers.kelToCel(props.data.temp.max)
+	var minTempC = conversionHelpers.kelToCel(props.data.temp.min)
 
 	return(
-		<div>
-			<ul style={styles.dayList} className="col s12 m3 l3">
-				<TheDate data={props.data}/>
-				<li>Description: {props.data.weather[0].description}</li>
-				<li>Max Temp: {maxTemp}</li>
-				<li>Min Temp: {minTemp}</li>
-				<li>Humidity: {props.data.humidity}%</li>
-				<TheIcon data = {props.data.weather[0].description}/>
-				<button onClick={props.onDetailClick}> More Details </button>
-			</ul>
-		</div>
+		<ul style={styles.dayList} className="col s12 m3 l3">
+			<TheDate data={props.data}/>
+			<li>Description: {props.data.weather[0].description}</li>
+			<li style={styles.paddingList}>Max Temp: {maxTempF}&#8457; / {maxTempC}&#8451;</li>
+				<li style={styles.paddingList}>Min Temp: {minTempF}&#8457; / {minTempC}&#8451;</li>
+			<li>Humidity: {props.data.humidity}%</li>
+			<TheIcon data = {props.data.weather[0].description}/>
+			<button 
+				onClick={props.onDetailClick}
+				className = "waves-effect waves-light btn"> 
+				More Details 
+			</button>
+		</ul>
 	)
 }
 

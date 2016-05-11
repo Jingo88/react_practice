@@ -68,16 +68,18 @@ function DetailUI(props){
 				<TheDate 
 					data={props.data.dt}/>
 				<ul className="col s12 m4">
-					<li style={styles.paddingList}>Max Temp: {maxTempF}&#8457;   /   {maxTempC}&#8451;</li>
-					<li style={styles.paddingList}>Min Temp: {minTempF}&#8457;   /   {minTempC}&#8451;</li>
-					<li style={styles.paddingList}>Day Avg Temp: {dayTempF}&#8457;   /   {dayTempC}&#8451; </li>
-					<li style={styles.paddingList}>Night Temp: {nightTempF}&#8457;   /   {nightTempC}&#8451;</li>
-					<li style={styles.paddingList}>Evening Temp: {eveTempF}&#8457;   /   {eveTempC}&#8451;</li>
-					<li style={styles.paddingList}>Morning Temp: {mornTempF}&#8457;   /   {mornTempC}&#8451;</li>
+					<li style={styles.paddingList}>Max Temp: {maxTempF}&#8457;/{maxTempC}&#8451;</li>
+					<li style={styles.paddingList}>Min Temp: {minTempF}&#8457;/{minTempC}&#8451;</li>
+					<li style={styles.paddingList}>Day Avg Temp: {dayTempF}&#8457;/{dayTempC}&#8451; </li>
+					<li style={styles.paddingList}>Night Temp: {nightTempF}&#8457;/{nightTempC}&#8451;</li>
+					<li style={styles.paddingList}>Evening Temp: {eveTempF}&#8457;/{eveTempC}&#8451;</li>
+					<li style={styles.paddingList}>Morning Temp: {mornTempF}&#8457;/{mornTempC}&#8451;</li>
 				</ul>
 				<ul className="col s12 m4">
-					<li style={styles.paddingList}>Humidity: {props.data.humidity}%</li>
-					<li style={styles.paddingList}>Wind Speed: {speed} ft/sec</li>
+					<li style={styles.paddingList}>Description: {props.data.weather[0].description}</li>
+					<li style={styles.paddingList}>Humidity: {props.data.humidity} %</li>
+					<li style={styles.paddingList}>Wind Speed: {speed} ft/sec | {props.data.speed} meter/sec </li>
+					<li style={styles.paddingList}>Cloudiness: {props.data.clouds} %</li>
 				</ul>
 				<TheIcon 
 					data={props.data.weather[0].description}
