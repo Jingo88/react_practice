@@ -16,19 +16,11 @@ var styles = {
 		color: 'white',
 		fontSize: "1.3em"
 	},
-	something: {
-		display: "inline-block",
-	},
 	heading: {
 		textDecoration: "underline",
 	},
-	smallh6 : {
-		fontWeight: "700",
-		fontSize: "1.3em",
-		fontDecoration: "underline"
-	},
 	imageSize: {
-		maxWidth: "100%"
+		minWidth: "100%"
 	}
 }
 
@@ -60,7 +52,9 @@ function DetailUI(props){
 				<li>Pressure: {props.data.pressure}</li>
 				<li>Speed: {props.data.speed}</li>
 			</ul>
-			<TheIcon data={props.data.weather[0].description}/>
+			<TheIcon 
+				data={props.data.weather[0].description}
+				style={styles.imageSize}/>
 		</div>
 	)
 }
