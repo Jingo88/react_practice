@@ -44,21 +44,27 @@ function TheDate(props){
 
 function DetailUI(props){
 	console.log(props)
-	var maxTempF = conversionHelpers.kelToFar(props.data.temp.max)
-	var minTempF = conversionHelpers.kelToFar(props.data.temp.min)
-	var dayTempF = conversionHelpers.kelToFar(props.data.temp.day)
-	var eveTempF = conversionHelpers.kelToFar(props.data.temp.eve)
-	var mornTempF = conversionHelpers.kelToFar(props.data.temp.morn)
-	var nightTempF = conversionHelpers.kelToFar(props.data.temp.night)
 
-	var maxTempC = conversionHelpers.kelToCel(props.data.temp.max)
-	var minTempC = conversionHelpers.kelToCel(props.data.temp.min)
-	var dayTempC = conversionHelpers.kelToCel(props.data.temp.day)
-	var eveTempC = conversionHelpers.kelToCel(props.data.temp.eve)
-	var mornTempC = conversionHelpers.kelToCel(props.data.temp.morn)
-	var nightTempC = conversionHelpers.kelToCel(props.data.temp.night)
+	var F = {
+		max: conversionHelpers.kelToFar(props.data.temp.max),
+		min: conversionHelpers.kelToFar(props.data.temp.min),
+		day: conversionHelpers.kelToFar(props.data.temp.day),
+		night: conversionHelpers.kelToFar(props.data.temp.night),
+		morn: conversionHelpers.kelToFar(props.data.temp.morn),
+		eve: conversionHelpers.kelToFar(props.data.temp.eve),
+	}
+
+	var C = {
+		max: conversionHelpers.kelToCel(props.data.temp.max),
+		min: conversionHelpers.kelToCel(props.data.temp.min),
+		day: conversionHelpers.kelToCel(props.data.temp.day),
+		night: conversionHelpers.kelToCel(props.data.temp.night),
+		morn: conversionHelpers.kelToCel(props.data.temp.morn),
+		eve: conversionHelpers.kelToCel(props.data.temp.eve),
+	}
 
 	var speed = conversionHelpers.meterToFeet(props.data.speed)
+
 	return(
 		<div className="row">
 			<div className="col s12">
@@ -68,12 +74,12 @@ function DetailUI(props){
 				<TheDate 
 					data={props.data.dt}/>
 				<ul className="col s12 m4">
-					<li style={styles.paddingList}>Max Temp: {maxTempF}&#8457;/{maxTempC}&#8451;</li>
-					<li style={styles.paddingList}>Min Temp: {minTempF}&#8457;/{minTempC}&#8451;</li>
-					<li style={styles.paddingList}>Day Avg Temp: {dayTempF}&#8457;/{dayTempC}&#8451; </li>
-					<li style={styles.paddingList}>Night Temp: {nightTempF}&#8457;/{nightTempC}&#8451;</li>
-					<li style={styles.paddingList}>Evening Temp: {eveTempF}&#8457;/{eveTempC}&#8451;</li>
-					<li style={styles.paddingList}>Morning Temp: {mornTempF}&#8457;/{mornTempC}&#8451;</li>
+					<li style={styles.paddingList}>Max Temp: {F["max"]}&#8457;/{C["max"]}&#8451;</li>
+					<li style={styles.paddingList}>Min Temp: {F["min"]}&#8457;/{C["min"]}&#8451;</li>
+					<li style={styles.paddingList}>Day Avg Temp: {F["day"]}&#8457;/{C["day"]}&#8451; </li>
+					<li style={styles.paddingList}>Night Temp: {F["night"]}&#8457;/{C["night"]}&#8451;</li>
+					<li style={styles.paddingList}>Morning Temp: {F["morn"]}&#8457;/{C["morn"]}&#8451;</li>
+					<li style={styles.paddingList}>Evening Temp: {F["eve"]}&#8457;/{C["eve"]}&#8451;</li>
 				</ul>
 				<ul className="col s12 m4">
 					<li style={styles.paddingList}>Description: {props.data.weather[0].description}</li>
