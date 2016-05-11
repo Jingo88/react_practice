@@ -17,6 +17,10 @@ function meterToFeet(meter){
 	return feetLen.toFixed(2)
 }
 
+function kelToCel(temp){
+	return Math.round(temp -273.15)
+}
+
 function getDate(unixTime){
 	var date = new Date(unixTime * 1000);
 	var dayIndex = date.getDay()
@@ -29,6 +33,7 @@ function getDate(unixTime){
 
 module.exports = {
 	kelToFar : kelToFar,
+	kelToCel : kelToCel,
 	getDate : getDate,
 	meterToFeet: meterToFeet,
 }
