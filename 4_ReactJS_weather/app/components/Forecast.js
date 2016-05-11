@@ -36,10 +36,12 @@ var styles = {
 	// "broken clouds" === broken_clouds
 	// "scattered clouds" === scattered_clouds
 	// "light snow" === light_snow
+	// heavy intensity rain === heavy_intensity_rain
 
 function TheIcon(props){
+	// use regex to target all spaces. .replace(" ","_") will only look for first occurrence
 	var description = props.data
-	var theSource = description.replace(" ", "_")
+	var theSource = description.replace(/\s+/g, "_")
 	
 	return (
 		<div>
@@ -74,6 +76,9 @@ function EachDay(props){
 			<button 
 				onClick={props.onDetailClick}
 				className = "waves-effect waves-light btn"> 
+				<i className="material-icons right">
+					cloud
+				</i>
 				More Details 
 			</button>
 		</ul>
@@ -105,7 +110,7 @@ function FiveDayWeather(props){
 }
 
 function Forecast(props){
-	// console.log(props.forecastData.data)
+	console.log(props.forecastData.data)
 	return props.isLoading === true
 		? <div> LOADING </div>
 		: <div style={styles.container}> 

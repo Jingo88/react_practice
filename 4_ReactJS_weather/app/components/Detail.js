@@ -1,4 +1,5 @@
-var React = require('react')
+var React = require('react');
+var PropTypes = React.PropTypes;
 
 var conversionHelpers = require('../utils/conversionHelpers');
 
@@ -105,10 +106,17 @@ function Detail(props){
 				data={props.weather}
 				city={props.city}/>
 			<button
-				onClick = {props.onFiveClick.bind(props.city)}
+				onClick = {props.onFiveClick.bind(null, props.city)}
 				className = "waves-effect waves-light btn">BACK TO FIVE DAY SCHEDULE</button>
 		</div>
 	)
 }
+
+Detail.PropTypes ={
+	data: PropTypes.object.isRequired,
+	city: PropTypes.string.isRequired,
+	onFiveClick: PropTypes.func.isRequired
+}
+
 
 module.exports = Detail

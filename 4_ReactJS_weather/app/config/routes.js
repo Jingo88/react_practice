@@ -10,6 +10,8 @@ var HomeContainer = require('../containers/HomeContainer');
 var ForecastContainer = require('../containers/ForecastContainer');
 var DetailContainer = require('../containers/DetailContainer');
 
+// Main container will go inside the id=app. 
+// It will render this.children which are the routes nested inside of it
 var routes = (
 	<Router history={hashHistory}>
 		<Route path='/' component={Main}>

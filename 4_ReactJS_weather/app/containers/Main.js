@@ -1,24 +1,34 @@
 var React = require('react');
-// var ReactDOM = require('react-dom');
 
 var styles = {
-	container: {
-		width: "100%",
-		height: "92%"
+	myNav: {
+		backgroundColor: "grey",
+	},
+	myLogo:{
+		backgroundImage: "url('./app/images/Snuffles.jpg')",
+		backgroundSize: "cover",
+		marginLeft: "1em",
+		maxHeight: "100%"
 	}
 }
+
+// this.props.children represent the nested routes inside of the routes.js file
+// the nav bar will always stay on the page since it is in the main container
 
 var Main = React.createClass({
 	render: function(){
 		return (
-			<div styles = {styles.container}> 
+			<div> 
 				<nav>
-			    <div className="nav-wrapper">
-			      <a href="#" className="brand-logo">Weather Logo</a>
+			    <div 
+			    	className="nav-wrapper" 
+			    	style={styles.myNav}>
+			      <a href="#" className="brand-logo"> Some Fancy Logo
+			      </a>
 			      <ul id="nav-mobile" className="right hide-on-med-and-down">
 			        <li><a href="/">Home</a></li>
-			        <li><a href="/">Something Else</a></li>
-			        <li><a href="/">Other Thing</a></li>
+			        <li><a href="http://www.jasonng.nyc" target="_blank">JSON's Portfolio</a></li>
+			        <li><a href="https://github.com/Jingo88" target="_blank">JSON's Github</a></li>
 			      </ul>
 			    </div>
 			  </nav>
@@ -29,8 +39,3 @@ var Main = React.createClass({
 })
 
 module.exports = Main;
-
-// ReactDOM.render(
-// 	<HelloWorld/>,
-// 	document.getElementById('app')
-// )

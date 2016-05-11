@@ -3,12 +3,26 @@ var PropTypes = React.PropTypes
 var weatherHelpers = require('../utils/weatherHelpers')
 // var styles = require('../styles/styles');
 
-var styles = {
+var styles = {}
 
-}
+//How the tutorial had styles. I think a styles object will work too
+//Was used for default props.
+//Also it's already nested inside a element that has the same styles from Home component
+
+// function getStyles (props) {
+//   return {
+    // display: 'flex',
+    // flexDirection: props.direction || 'column',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // maxWidth: 300,
+    // alignSelf: 'right'
+//   }
+// }
 
 function Button(props){
 	// why is the i tag material icons not working?!?!? wrong cdn? 
+	console.log(props)
 	return(
 		<button
 			className = "waves-effect waves-light btn"
@@ -16,8 +30,9 @@ function Button(props){
 			name='action'
 			onClick = {props.onSubmitCity}>
 			<i className="material-icons right">
-			{props.children} 
+				cloud
 			</i>
+			{props.children} 
 		</button>
 	)
 }
@@ -33,21 +48,11 @@ function InputField(props){
 	)
 }
 
-function getStyles (props) {
-  return {
-    display: 'flex',
-    flexDirection: props.direction || 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    maxWidth: 300,
-    alignSelf: 'right'
-  }
-}
 
 function GetCity(props){
 	return (
 		<div>
-			<InputField style = {getStyles(props)}
+			<InputField 
 				onUpdateCity = {props.onUpdateCity}
 				city = {props.city}/>
 			<Button

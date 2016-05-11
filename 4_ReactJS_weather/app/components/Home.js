@@ -3,8 +3,6 @@ var GetCityContainer = require('../containers/GetCityContainer');
 // var styles = require('../styles/styles');
 
 var styles = {
-	//flexDirection - flexible items are displayed vertically as a column
-	//display:flex - all flexible items be the same length
 	container: {
 		display: 'flex',
 		flexDirection: 'column',
