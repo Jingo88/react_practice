@@ -57,8 +57,8 @@ function TheDate(props){
 
 function EachDay(props){
 
-	var maxTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.max)))
-	var minTemp = Math.round(conversionHelpers.kelToFar(parseInt(props.data.temp.min)))
+	var maxTemp = conversionHelpers.kelToFar(props.data.temp.max)
+	var minTemp = conversionHelpers.kelToFar(props.data.temp.min)
 
 	return(
 		<div>
