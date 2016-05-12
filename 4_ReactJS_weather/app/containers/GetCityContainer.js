@@ -20,7 +20,8 @@ var GetCityContainer = React.createClass({
 	},
 	//if the user presses submit without entering a city shit gets fucked up
 	handleSubmitCity: function(event){
-		event.preventDefault()
+		// not needed
+		// event.preventDefault()
 
 		if (this.state.city === ''){
 			this.setState({

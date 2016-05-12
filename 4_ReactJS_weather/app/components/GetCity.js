@@ -33,17 +33,38 @@ function Button(props){
 	)
 }
 
-// Can we get enter press to work here?
-function InputField(props){
-	return(
-		<input 
+const InputField = React.createClass({
+	add: function(event){
+		if (event.keyCode === 13){
+			console.log(this.props)
+			return this.props.onSubmitCity()
+		}
+	},
+	render: function(){
+		return (
+			<input 
 			type="text" 
 			className="input-field"
-			onChange = {props.onUpdateCity}
+			onChange = {this.props.onUpdateCity}
 			placeholder="Enter A City"
-			value = {props.city}/>
-	)
-}
+			value = {this.props.city}
+			onKeyDown = {this.add}/>
+		)
+	}
+})
+
+// save this for now. Going to make it a class for add function
+// function InputField(props){
+// 	return(
+// 		<input 
+// 			type="text" 
+// 			className="input-field"
+// 			onChange = {props.onUpdateCity}
+// 			placeholder="Enter A City"
+// 			value = {props.city}
+// 			onKeyDown = {this.add}/>
+// 	)
+// }
 
 // Search function checks to see if the "search" state is true or false
 // Will render an error message if the user did not enter a city or state
