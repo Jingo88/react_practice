@@ -57,6 +57,8 @@ function TheDate(props){
 	return <h6 style={styles.smallh6}>{date}</h6>
 }
 
+
+
 function EachDay(props){
 
 	var maxTempF = conversionHelpers.kelToFar(props.data.temp.max)
@@ -70,7 +72,7 @@ function EachDay(props){
 			<TheDate data={props.data}/>
 			<li>Description: {props.data.weather[0].description}</li>
 			<li style={styles.paddingList}>Max Temp: {maxTempF}&#8457; / {maxTempC}&#8451;</li>
-				<li style={styles.paddingList}>Min Temp: {minTempF}&#8457; / {minTempC}&#8451;</li>
+			<li style={styles.paddingList}>Min Temp: {minTempF}&#8457; / {minTempC}&#8451;</li>
 			<li>Humidity: {props.data.humidity}%</li>
 			<TheIcon data = {props.data.weather[0].description}/>
 			<button 

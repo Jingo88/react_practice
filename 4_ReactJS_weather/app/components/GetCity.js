@@ -1,13 +1,11 @@
 var React = require('react')
 var PropTypes = React.PropTypes
 var weatherHelpers = require('../utils/weatherHelpers')
-// var styles = require('../styles/styles');
 
 var styles = {}
 
-//How the tutorial had styles. I think a styles object will work too
-//Was used for default props.
-//Also it's already nested inside a element that has the same styles from Home component
+// You can make functions that return an object or declare a variable that is assigned an object
+// Commented out below because this component is already inheriting the styles from Home Component
 
 // function getStyles (props) {
 //   return {
