@@ -2,7 +2,11 @@ var React = require('react')
 var PropTypes = React.PropTypes
 var weatherHelpers = require('../utils/weatherHelpers')
 
-var styles = {}
+var styles = {
+	myButtons:{
+		backgroundColor: "#19647E"
+	}
+}
 
 // You can make functions that return an object or declare a variable that is assigned an object
 // Commented out below because this component is already inheriting the styles from Home Component
@@ -24,7 +28,8 @@ function Button(props){
 			className = "waves-effect waves-light btn"
 			type='submit'
 			name='action'
-			onClick = {props.onSubmitCity}>
+			onClick = {props.onSubmitCity}
+			style={styles.myButtons}>
 			<i className="material-icons right">
 				cloud
 			</i>

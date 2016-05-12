@@ -1,6 +1,7 @@
 var React = require('react');
 var PropTypes = React.PropTypes
 var conversionHelpers = require('../utils/conversionHelpers');
+var Loading = require('./Loading');
 
 var styles = {
 	container: {
@@ -82,6 +83,7 @@ function EachDay(props){
 			<li style={styles.paddingList}>Min Temp: {minTempF}&#8457; / {minTempC}&#8451;</li>
 			<li>Humidity: {props.data.humidity}%</li>
 			<TheIcon data = {props.data.weather[0].description}/>
+
 			<button 
 				onClick={props.onDetailClick}
 				className = "waves-effect waves-light btn"
@@ -89,7 +91,7 @@ function EachDay(props){
 				<i className="material-icons right">
 					cloud
 				</i>
-				More Details 
+				More Details
 			</button>
 		</ul>
 	)
@@ -122,7 +124,7 @@ function FiveDayWeather(props){
 function Forecast(props){
 	console.log(props.forecastData.data)
 	return props.isLoading === true
-		? <div> LOADING </div>
+		? <Loading />
 		: <div style={styles.container}> 
 				<h1 style={styles.heading}>
 					{props.forecastData.data.city.name}

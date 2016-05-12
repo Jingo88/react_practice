@@ -20,18 +20,16 @@ var ForecastContainer = React.createClass({
 		this.getForecast(nextProps.routeParams.city)
 	},
 	getForecast : function(city){
-		// weatherHelpers.getCurrentWeather(city)
 		weatherHelpers.getFiveDayWeather(city)
 			.then(function(data){
 				this.setState({
-					isLoading: false,
+					isLoading: true,
 					forecastData : data
 				})
 			}.bind(this))
 	},
 	handleDetailClick: function(weather){
 		console.log('WE ARE CLICKING SHIT')
-		// console.log(this.state.forecastData.data.city)
 		console.log(weather)
 		this.context.router.push({
 			pathname: '/detail/' + this.state.forecastData.data.city.name,

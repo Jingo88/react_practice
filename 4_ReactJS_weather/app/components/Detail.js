@@ -98,7 +98,6 @@ function DetailUI(props){
 }
 
 function Detail(props){
-	console.log(props)
 	return (
 		<div 
 			style={styles.wrapping}
@@ -110,11 +109,19 @@ function Detail(props){
 				data={props.weather}
 				city={props.city}/>
 			<div className="row">
+
 				<button
 					onClick = {props.onFiveClick.bind(null, props.city)}
-					className="waves-effect waves-light btn"
-					style={styles.myButtons}
-					className="col s12 m4 offset-m4">Back To Five Day Forecast</button>
+					className="waves-effect waves-light btn col s12 m4 offset-m4"
+					style={styles.myButtons}>
+					<i className="material-icons right">
+						cloud
+					</i>
+						Back To Five Day Forecast
+					<i className="material-icons left">
+						cloud
+					</i>
+					</button>
 			</div>
 		</div>
 	)
