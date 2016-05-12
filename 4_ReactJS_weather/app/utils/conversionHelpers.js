@@ -1,3 +1,13 @@
+const days = [
+	"Sunday",
+	"Monday",
+	"Tuesday",
+	"Wednesday",
+	"Thursday",
+	"Friday",
+	"Saturday"
+]
+
 //kelvin to farenheit
 function kelToFar(temp){
 	return Math.round(temp * (9/5) - 459.67)

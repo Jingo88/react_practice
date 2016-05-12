@@ -3,7 +3,6 @@ var GetCity = require('../components/GetCity');
 
 
 // Called from the Home Component
-
 var GetCityContainer = React.createClass({
 	contextTypes: {
 		router : React.PropTypes.object.isRequired
@@ -15,15 +14,24 @@ var GetCityContainer = React.createClass({
 	},
 	getInitialState: function(){
 		return {
+			search: true,
 			city: ''
 		}
 	},
+	//if the user presses submit without entering a city shit gets fucked up
 	handleSubmitCity: function(event){
 		event.preventDefault()
 
-		this.context.router.push({
-			pathname: '/forecast/' + this.state.city
-		})
+		if (this.state.city === ''){
+			this.setState({
+				search: false,
+				city: ""
+			})
+		} else {
+			this.context.router.push({
+				pathname: '/forecast/' + this.state.city
+			})	
+		}
 	},
 	handleUpdateCity: function(event){
 		this.setState({
@@ -33,6 +41,7 @@ var GetCityContainer = React.createClass({
 	render: function(){
 		return(
 			<GetCity 
+				search = {this.state.search}
 				direction = {this.props.direction}
 				onSubmitCity = {this.handleSubmitCity}
 				onUpdateCity = {this.handleUpdateCity}

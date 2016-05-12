@@ -27,8 +27,8 @@ var Main = React.createClass({
 			      </a>
 			      <ul id="nav-mobile" className="right hide-on-med-and-down">
 			        <li><a href="/">Home</a></li>
-			        <li><a href="http://www.jasonng.nyc" target="_blank">JSON's Portfolio</a></li>
-			        <li><a href="https://github.com/Jingo88" target="_blank">JSON's Github</a></li>
+			        <li><a href="http://www.jasonng.nyc" target="_blank">Jingo's Portfolio</a></li>
+			        <li><a href="https://github.com/Jingo88" target="_blank">Jingo's Github</a></li>
 			      </ul>
 			    </div>
 			  </nav>

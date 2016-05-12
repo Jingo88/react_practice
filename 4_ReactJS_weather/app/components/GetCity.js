@@ -19,8 +19,6 @@ var styles = {}
 // }
 
 function Button(props){
-	// why is the i tag material icons not working?!?!? wrong cdn? 
-	console.log(props)
 	return(
 		<button
 			className = "waves-effect waves-light btn"
@@ -35,6 +33,7 @@ function Button(props){
 	)
 }
 
+// Can we get enter press to work here?
 function InputField(props){
 	return(
 		<input 
@@ -46,12 +45,23 @@ function InputField(props){
 	)
 }
 
+// Search function checks to see if the "search" state is true or false
+// Will render an error message if the user did not enter a city or state
+function Search(props){
+	if (props.search === false){
+		return	<h6> Please enter a city or state below</h6>	
+	} else {
+		return <div></div>
+	}
+}
 
-function GetCity(props){
+function GetCity(props){	
 	return (
 		<div>
+			<Search search={props.search} />
 			<InputField 
 				onUpdateCity = {props.onUpdateCity}
+				onSubmitCity = {props.onSubmitCity}
 				city = {props.city}/>
 			<Button
 				onSubmitCity = {props.onSubmitCity}>
@@ -62,6 +72,7 @@ function GetCity(props){
 }
 
 GetCity.PropTypes = {
+	search : PropTypes.bool.isRequired,
 	direction : PropTypes.string.isRequired,
 	onSubmitCity : PropTypes.func.isRequired,
 	onUpdateCity : PropTypes.func.isRequired,

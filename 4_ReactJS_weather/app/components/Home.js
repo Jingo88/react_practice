@@ -17,7 +17,7 @@ var styles = {
 function Home(props){
 	return(
 		<div style={styles.container}>
-			<h1>Get YoSelf The Weather!</h1>
+			<h1>Jingo's Weather Channel</h1>
 			<GetCityContainer />
 		</div>
 	)
