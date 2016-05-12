@@ -24,6 +24,13 @@ var styles = {
 	},
 	imageSize: {
 		maxWidth: "100%"
+	},
+	heading: {
+		textDecoration: "underline",
+		textAlign: "center",
+	},
+	myButtons:{
+		backgroundColor: "#19647E"
 	}
 }
 
@@ -77,7 +84,8 @@ function EachDay(props){
 			<TheIcon data = {props.data.weather[0].description}/>
 			<button 
 				onClick={props.onDetailClick}
-				className = "waves-effect waves-light btn"> 
+				className = "waves-effect waves-light btn"
+				style={styles.myButtons}> 
 				<i className="material-icons right">
 					cloud
 				</i>
@@ -116,7 +124,9 @@ function Forecast(props){
 	return props.isLoading === true
 		? <div> LOADING </div>
 		: <div style={styles.container}> 
-				<h1>{props.forecastData.data.city.name}</h1>
+				<h1 style={styles.heading}>
+					{props.forecastData.data.city.name}
+				</h1>
 				<FiveDayWeather 
 					data={props.forecastData.data.list}
 					onDetailClick={props.onDetailClick}/>

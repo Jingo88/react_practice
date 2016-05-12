@@ -23,7 +23,7 @@ var Main = React.createClass({
 			    <div 
 			    	className="nav-wrapper" 
 			    	style={styles.myNav}>
-			      <a href="#" className="brand-logo"> Some Fancy Logo
+			      <a href="/" className="brand-logo"> Some Fancy Logo
 			      </a>
 			      <ul id="nav-mobile" className="right hide-on-med-and-down">
 			        <li><a href="/">Home</a></li>

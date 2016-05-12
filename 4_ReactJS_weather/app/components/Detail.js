@@ -24,6 +24,9 @@ var styles = {
 	},
 	paddingList: {
 		padding: ".5em",
+	},
+	myButtons:{
+		backgroundColor: "#19647E"
 	}
 }
 
@@ -69,9 +72,7 @@ function DetailUI(props){
 	return(
 		<div className="row">
 			<div className="col s12">
-				<h1 style={styles.heading}>
-					{props.city}
-				</h1>
+
 				<TheDate 
 					data={props.data.dt}/>
 				<ul className="col s12 m4">
@@ -102,12 +103,19 @@ function Detail(props){
 		<div 
 			style={styles.wrapping}
 			className="container">
+			<h1 style={styles.heading}>
+				{props.city}
+			</h1>
 			<DetailUI 
 				data={props.weather}
 				city={props.city}/>
-			<button
-				onClick = {props.onFiveClick.bind(null, props.city)}
-				className = "waves-effect waves-light btn">BACK TO FIVE DAY SCHEDULE</button>
+			<div className="row">
+				<button
+					onClick = {props.onFiveClick.bind(null, props.city)}
+					className="waves-effect waves-light btn"
+					style={styles.myButtons}
+					className="col s12 m4 offset-m4">Back To Five Day Forecast</button>
+			</div>
 		</div>
 	)
 }
