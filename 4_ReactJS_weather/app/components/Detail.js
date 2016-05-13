@@ -8,7 +8,6 @@ var styles = {
 	wrapping: {
 		alignItems: 'center',
 		minHeight: '95vh',
-		width: '100%',
 		color: 'white',
 		fontSize: "1.3em"
 	},
@@ -117,7 +116,7 @@ function Detail(props){
 					<i className="material-icons right">
 						cloud
 					</i>
-						Back To Five Day Forecast
+						Five Day Forecast
 					<i className="material-icons left">
 						cloud
 					</i>

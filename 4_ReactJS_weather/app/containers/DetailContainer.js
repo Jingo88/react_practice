@@ -1,15 +1,11 @@
 var React = require('react');
-
 var Detail = require('../components/Detail');
 
-var DetailContainer = React.createClass({
+const DetailContainer = React.createClass({
 	contextTypes:{
 		router: React.PropTypes.object.isRequired
 	},
 	handleFiveClick: function(city){
-		console.log('WE ARE IN HANDLE FIVE')
-		console.log(city)
-		console.log('what is the city?')
 		this.context.router.push({
 			pathname: '/forecast/' + city
 		})

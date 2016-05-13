@@ -3,19 +3,13 @@ var React = require('react');
 var styles = {
 	myNav: {
 		backgroundColor: "grey",
-	},
-	myLogo:{
-		backgroundImage: "url('./app/images/Snuffles.jpg')",
-		backgroundSize: "cover",
-		marginLeft: "1em",
-		maxHeight: "100%"
 	}
 }
 
 // this.props.children represent the nested routes inside of the routes.js file
 // the nav bar will always stay on the page since it is in the main container
 
-var Main = React.createClass({
+const Main = React.createClass({
 	render: function(){
 		return (
 			<div> 

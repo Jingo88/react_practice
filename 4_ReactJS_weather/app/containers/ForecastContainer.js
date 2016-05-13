@@ -3,6 +3,7 @@ var React = require('react');
 var Forecast = require('../components/Forecast');
 var weatherHelpers = require('../utils/weatherHelpers');
 
+
 var ForecastContainer = React.createClass({
 	contextTypes: {
 		router : React.PropTypes.object.isRequired
@@ -23,7 +24,7 @@ var ForecastContainer = React.createClass({
 		weatherHelpers.getFiveDayWeather(city)
 			.then(function(data){
 				this.setState({
-					isLoading: true,
+					isLoading: false,
 					forecastData : data
 				})
 			}.bind(this))

@@ -5,8 +5,6 @@ var Loading = require('./Loading');
 
 var styles = {
 	container: {
-		// backgroundSize: 'cover',
-		// backgroundImage: "url('app/images/simple.jpg')",
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
@@ -17,6 +15,8 @@ var styles = {
 	},
 	dayList: {
 		display: "inline-block",
+		marginLeft: "1.25em",
+		marginRight: "1.25em",
 	},
 	smallh6 : {
 		fontWeight: "700",
@@ -76,7 +76,7 @@ function EachDay(props){
 	var minTempC = conversionHelpers.kelToCel(props.data.temp.min)
 
 	return(
-		<ul style={styles.dayList} className="col s12 m3 l3">
+		<ul style={styles.dayList} className="col s12 m2 l2">
 			<TheDate data={props.data}/>
 			<li>Description: {props.data.weather[0].description}</li>
 			<li style={styles.paddingList}>Max Temp: {maxTempF}&#8457; / {maxTempC}&#8451;</li>
@@ -113,7 +113,7 @@ function EachDayMap(props){
 
 function FiveDayWeather(props){
 	return (
-		<div className="container">
+		<div>
 			<EachDayMap 
 				data={props.data}
 				onDetailClick = {props.onDetailClick}/>
@@ -122,7 +122,6 @@ function FiveDayWeather(props){
 }
 
 function Forecast(props){
-	console.log(props.forecastData.data)
 	return props.isLoading === true
 		? <Loading />
 		: <div style={styles.container}> 

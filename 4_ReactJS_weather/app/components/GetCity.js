@@ -8,20 +8,6 @@ var styles = {
 	}
 }
 
-// You can make functions that return an object or declare a variable that is assigned an object
-// Commented out below because this component is already inheriting the styles from Home Component
-
-// function getStyles (props) {
-//   return {
-    // display: 'flex',
-    // flexDirection: props.direction || 'column',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // maxWidth: 300,
-    // alignSelf: 'right'
-//   }
-// }
-
 function Button(props){
 	return(
 		<button
@@ -58,19 +44,6 @@ const InputField = React.createClass({
 	}
 })
 
-// save this for now. Going to make it a class for add function
-// function InputField(props){
-// 	return(
-// 		<input 
-// 			type="text" 
-// 			className="input-field"
-// 			onChange = {props.onUpdateCity}
-// 			placeholder="Enter A City"
-// 			value = {props.city}
-// 			onKeyDown = {this.add}/>
-// 	)
-// }
-
 // Search function checks to see if the "search" state is true or false
 // Will render an error message if the user did not enter a city or state
 function Search(props){
@@ -106,3 +79,42 @@ GetCity.PropTypes = {
 }
 
 module.exports = GetCity;
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////	NOTES 		///////////////////////////////
+//////////////////////////////////////////////////////////////////////////////// 
+
+
+// If we kept inputfield strictly for presentation this works
+// However we made it into a class so we could add a listener for enter press
+// function InputField(props){
+// 	return(
+// 		<input 
+// 			type="text" 
+// 			className="input-field"
+// 			onChange = {props.onUpdateCity}
+// 			placeholder="Enter A City"
+// 			value = {props.city}
+// 			onKeyDown = {this.add}/>
+// 	)
+// }
+
+// You can make functions that return an object or declare a variable that is assigned an object
+// Below is an example. We do not need styling because most of our styles is inherited from Home
+
+// function getStyles (props) {
+//   return {
+    // display: 'flex',
+    // flexDirection: props.direction || 'column',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // maxWidth: 300,
+    // alignSelf: 'right'
+//   }
+// }
+
+
+
+
+
+

@@ -1,6 +1,5 @@
 var React = require('react');
 var GetCityContainer = require('../containers/GetCityContainer');
-// var styles = require('../styles/styles');
 
 var styles = {
 	container: {

@@ -3,7 +3,7 @@ var Home = require('../components/Home');
 
 // IndexRoute in the router. First nested child going into the Main Container
 
-var HomeContainer = React.createClass({
+const HomeContainer = React.createClass({
 	render: function(){
 		return (
 			<div>

@@ -3,15 +3,18 @@ var GetCity = require('../components/GetCity');
 
 
 // Called from the Home Component
-var GetCityContainer = React.createClass({
+// Holds logic for updating state and user submission in getcity
+const GetCityContainer = React.createClass({
 	contextTypes: {
 		router : React.PropTypes.object.isRequired
 	},
-	getDefaultProps: function(){
-		return {
-			direction: 'column'
-		}		
-	},
+	// This is not necessary
+	// Just an example of how to use default props
+	// getDefaultProps: function(){
+	// 	return {
+	// 		direction: 'column'
+	// 	}		
+	// },
 	getInitialState: function(){
 		return {
 			search: true,
