@@ -1,0 +1,21 @@
+var HtmlWebpackPlugin = require("html-webpack-plugin")
+var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+	template: 'index.html',
+	inject: 'body'
+})
+
+module.exports = {
+	entry: [
+		'./app/index.js'
+	],
+	output: {
+		path: __dirname + '/dist',
+		filename: 'index_budle.js'
+	},
+	module: {
+		loaders: [
+			{test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}
+		]
+	},
+	plugins: [HTMLWebpackPluginConfig]
+}
