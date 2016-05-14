@@ -3,7 +3,6 @@ var PropTypes = React.PropTypes;
 
 var conversionHelpers = require('../utils/conversionHelpers');
 
-
 var styles = {
 	wrapping: {
 		alignItems: 'center',
