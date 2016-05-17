@@ -21,7 +21,12 @@ module.exports = {
     // js
     {
       test: /\.js$/,
-      loaders: ['babel'],
+      loader: 'babel',
+      //Had to add query, with react and es2015. Move this to babelrc
+      // query:
+      //   {
+      //     presets: ['react', 'es2015'] 
+      //   },
       include: path.join(__dirname, 'client')
     },
     // CSS
