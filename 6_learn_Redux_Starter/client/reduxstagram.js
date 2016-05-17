@@ -6,8 +6,12 @@ import { render } from 'react-dom';
 
 import css from './styles/style.styl';
 
+import Main from './components/Main';
+
 render(
-	<h1>hello world</h1>, 
+	<Main>
+		<div>blahblahblah</div>
+	</Main>, 
 	document.getElementById('root')
 );
 
