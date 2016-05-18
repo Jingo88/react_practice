@@ -26,4 +26,8 @@ const router = (
 
 // export const router;
 // export function router;
-export default router;
+// export default router;
+
+module.exports = {
+	router: router
+}

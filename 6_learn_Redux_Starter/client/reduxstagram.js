@@ -21,10 +21,6 @@ const router = (
 
 render(router, document.getElementById('root'));
 
-render(
-	router, 
-	document.getElementById('root')
-);
 
 
 
@@ -32,7 +28,7 @@ render(
 // import router from './config/router';
 
 // render(
-// 	<router />, 
+// 	router, 
 // 	document.getElementById('root')
 // );
 
