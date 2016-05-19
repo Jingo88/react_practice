@@ -9,39 +9,23 @@ import Single from './components/Single';
 import PhotoGrid from './components/PhotoGrid';
 
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
+import store, { history } from './store';
 
+// wrapping the router in the provider gives it the super powers of the provider to our store
+//The history in Router is grabbing our history we exported from store.js
 const router = (
-  <Router history={browserHistory}>
-    <Route path="/" component={Main}>
-      <IndexRoute component={PhotoGrid}></IndexRoute>
-      <Route path="/view/:postId" component={Single}></Route>
-    </Route>
-  </Router>
+	<Provider store={store}>
+		<Router history={history}>
+	    <Route path="/" component={Main}>
+	      <IndexRoute component={PhotoGrid}></IndexRoute>
+	      <Route path="/view/:postId" component={Single}></Route>
+	    </Route>
+	  </Router>
+	</Provider>
+  
 )
 
 render(router, document.getElementById('root'));
 
 
-
-
-
-// import router from './config/router';
-
-// render(
-// 	router, 
-// 	document.getElementById('root')
-// );
-
-
-
-
-// var React = require('react')
-// var ReactDOM = require('react-dom');
-
-// var css = require('./styles/style.styl')
-
-
-// ReactDOM.render(
-// 	<p>hi</p>,
-// 	document.getElementById('root')
-// );
