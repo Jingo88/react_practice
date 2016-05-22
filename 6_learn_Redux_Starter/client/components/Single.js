@@ -1,6 +1,6 @@
 import React from 'react';
 import Photo from './Photo';
-import Comment from './Comments';
+import Comments from './Comments';
 
 //findIndex is new to the browser
 const Single = React.createClass({
@@ -18,7 +18,9 @@ const Single = React.createClass({
 					i={i}
 					post = {post}
 					{...this.props}/>
-				<Comment postComments = {postComments}/>
+				<Comments 
+					postComments = {postComments}
+					{...this.props}/>
 			</h3>
 		)
 	}
