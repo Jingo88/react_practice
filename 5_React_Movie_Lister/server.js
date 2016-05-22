@@ -2,7 +2,7 @@ var path = require('path');
 var express = require('express');
 var app = express();
 var webpack = require('webpack');
-var webpackConfig = require('webpack.config.js');
+var webpackConfig = require('./webpack.config.js');
 
 var compiler = webpack(webpackConfig);
 
@@ -10,13 +10,13 @@ var port = 8000
 
 app.use(require('webpack-dev-middleware')(compiler, {
 	noInfo: true,
-	publicPath: config.output.publicPath
+	publicPath: webpackConfig.output.publicPath
 }));
 
-app.use(require('webpack-hot-middleware')(complier));
+app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('*', function(req, res){
-	res.sendFile(path.join(__dirname, 'base.html'));
+	res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(port, 'localhost', function(err){
