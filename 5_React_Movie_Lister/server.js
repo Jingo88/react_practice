@@ -4,6 +4,8 @@ var app = express();
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config.js');
 
+var somePath=path.resolve(__dirname, 'app', 'index.js')
+
 var compiler = webpack(webpackConfig);
 
 var port = 8000
@@ -16,7 +18,8 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('*', function(req, res){
-	res.sendFile(path.join(__dirname, 'index.html'));
+	// res.sendFile(path.join(__dirname, 'index.html'));
+	res.sendFile(somePath);
 });
 
 app.listen(port, 'localhost', function(err){
