@@ -32,7 +32,6 @@ function MovieList(props){
 
 	    	<input 
 	    		type="submit"
-	    		onSubmit = {props.onSubmitMovie}
 	    		hidden/>
 	    </form>
 	  </div>
