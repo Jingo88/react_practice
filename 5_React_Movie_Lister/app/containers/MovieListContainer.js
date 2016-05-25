@@ -14,18 +14,24 @@ const MovieListContainer = React.createClass({
 		}
 	},
 	handleSubmitMovie(event){
-		if (this.state.movieTitle === ""){
-			this.setState({
-				search: false,
-				city: ""
-			})
-		} else {
-			this.context.router.push({
-				pathname: '/movies/' + this.state.movieTitle
-			})
-		}
+		event.preventDefault()
+		console.log('HANDLE SUBMIT MOVIE')
+		console.log(this.state.movieTitle)
+		console.log(event)
+		
+		// if (this.state.movieTitle === ""){
+		// 	this.setState({
+		// 		search: false,
+		// 		city: ""
+		// 	})
+		// } else {
+		// 	this.context.router.push({
+		// 		pathname: '/movies/' + this.state.movieTitle
+		// 	})
+		// }
 	},
 	handleUpdateMovie(event){
+		console.log('HANDLE UPDATE MOVIE')
 		this.setState({
 			movieTitle: event.target.value
 		})

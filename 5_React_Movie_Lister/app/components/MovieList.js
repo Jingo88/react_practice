@@ -1,14 +1,41 @@
 import React from 'react'
 
+function SearchBar(props){
+	return (
+		<div className="row">
+	    <form className="col s6 offset-s3">
+	    	<input 
+	    		placeholder="Enter Movie Title" 
+	    		type="text"
+	    		className="validate"/>
+
+	    	<input 
+	    		type="submit"
+	    		hidden/>
+	    </form>
+	  </div>
+	)
+}
+
 function MovieList(props){
 	console.log(props)
 	return (
-		<div>
-			<h1>We are in the movie list</h1>
-			<p>{props.search}</p>
-			<p>{props.movieTitle}</p>
-		</div>
-		
+
+		<div className="row">
+	    <form className="col s6 offset-s3"
+	    	onSubmit = {props.onSubmitMovie}>
+	    	<input 
+	    		placeholder="Enter Movie Title" 
+	    		type="text"
+	    		className="validate"
+	    		onChange = {props.onUpdateMovie}/>
+
+	    	<input 
+	    		type="submit"
+	    		onSubmit = {props.onSubmitMovie}
+	    		hidden/>
+	    </form>
+	  </div>
 	)	
 } 
 
