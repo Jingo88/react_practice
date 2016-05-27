@@ -1,27 +1,37 @@
 import React from 'react';
 
 var styles = {
-
+	posterImage : {
+		width: '100%',
+		height: '100%'
+	}
 }
 
 function MoviePoster(props){
 	return props.data === "N/A"
-		? <img src="http://www.nyctransitforums.com/forums/fcontent/default.png" />
-		: <img src={props.data} />
+		? <img style={styles.posterImage} className="activator" src="http://www.nyctransitforums.com/forums/fcontent/default.png" />
+		: <img style={styles.posterImage} className="activator" src={props.data} />
 }
 
 function MovieUI(props){
-	
 	console.log(props)
 	return(
-		<div>
-			<MoviePoster 
-				data = {props.data.Poster}/>
-			<ul>
-				<li>{props.data.Title}</li>
-				<li>{props.data.Year}</li>
-				<li>{props.data.Type}</li>
-			</ul>
+		<div className="col s12 m4">
+			<div className="card large">
+				<div className="card-image waves-effect waves-block waves-light">
+					<MoviePoster 
+						data = {props.data.Poster}/>
+				</div>
+
+				<div className="card-content">
+		      <span className="card-title activator grey-text text-darken-4">{props.data.Title}<i className="material-icons right">more_vert</i></span>
+		      <p><a href="#">This is a link</a></p>
+				</div>
+
+				<div className="card-reveal">
+      		<span className="card-title grey-text text-darken-4">{props.data.Title}<i className="material-icons right">close</i></span>
+    		</div>
+			</div>
 		</div>
 	)
 }
@@ -29,7 +39,7 @@ function MovieUI(props){
 function EachMovie(props){
 	
 	return (
-		<div>
+		<div className="row">
 			{props.data.map(function(movie){
 				return <MovieUI 
 								data={movie}/>
@@ -45,7 +55,7 @@ function MovieList(props){
 	// console.log('MOVIE LIST PRESENTATIONAL PART 2')
 	return props.loading === true
 		? <h1> LOADING </h1>
-		: <div>
+		: <div className = "container">
 				<EachMovie data = {props.moviesInfo}/>
 			</div>
 }
