@@ -1,10 +1,25 @@
 import React from 'react';
 
+import { singleSearch, multiSearch} from '../helpers/movieHelpers'; 
+
 var styles = {
 	posterImage : {
 		width: '100%',
 		height: '100%'
 	}
+}
+
+function MovieDetails(props){
+	return (
+				<div className="card-reveal">
+      		<span className="card-title grey-text text-darken-4">
+      			movie details
+      			
+      			<i className="material-icons right">close</i>
+      		</span>
+    		</div>
+			
+	)
 }
 
 function MoviePoster(props){
@@ -14,7 +29,7 @@ function MoviePoster(props){
 }
 
 function MovieUI(props){
-	console.log(props)
+	
 	return(
 		<div className="col s12 m4">
 			<div className="card large">
@@ -35,17 +50,10 @@ function MovieUI(props){
 					<a href="#">Share</a>
 				</div>
 
-				<div className="card-reveal">
-      		<span className="card-title grey-text text-darken-4">
-      			{props.data.Title}
-      			<ul>
-      				<li>{props.data.Year}</li>
-      				<li>{props.data.Type}</li>
-      			</ul>
-      			<i className="material-icons right">close</i>
-      		</span>
-    		</div>
+				<MovieDetails />
 			</div>
+
+
 		</div>
 	)
 }

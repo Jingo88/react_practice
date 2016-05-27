@@ -4,12 +4,20 @@ var singleTitle = "http://www.omdbapi.com/?t="
 
 var multiTitle = "http://www.omdbapi.com/?s="
 
-function singleSearch(title){
-	let endpoint = singleTitle + title
+function singleSearch(title, year){
+	let endpoint = singleTitle + title + "&y=" + year;
+
+	return axios.get(endpoint)
+		.then(function(response){
+			return response
+		})
+		.catch(function(err){
+			console.warn("Error with the Single Search!!!" + err)
+		})	
+
 }
 
 function multiSearch(title){
-	// console.log('WERE IN THE MULTI SEARCH HELPER')
 
 	let endpoint = multiTitle + title
 
