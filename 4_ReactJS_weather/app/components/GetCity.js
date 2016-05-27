@@ -27,7 +27,7 @@ function Button(props){
 const InputField = React.createClass({
 	add: function(event){
 		if (event.keyCode === 13){
-			console.log(this.props)
+			// console.log(this.props)
 			return this.props.onSubmitCity()
 		}
 	},

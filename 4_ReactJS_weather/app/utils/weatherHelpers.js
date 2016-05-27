@@ -66,6 +66,7 @@ function getFiveDayWeather(city){
 		//JS promise to wait
 		//data is JSON object that was returned
 		.then(function(data){
+				console.log(data)
 				//Send data back to where it was called
 				return data	
 			})
