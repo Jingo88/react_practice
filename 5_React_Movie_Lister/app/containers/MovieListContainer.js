@@ -1,6 +1,8 @@
 import React from 'react';
 import MovieList from '../components/MovieList';
 
+import { singleSearch, multiSearch} from '../helpers/movieHelpers'; 
+
 const MovieListContainer = React.createClass({
 	getInitialState(){
 		return{
@@ -10,6 +12,8 @@ const MovieListContainer = React.createClass({
 	},
 	componentDidMount(){
 		console.log(this.props.params.movieTitle)
+
+		multiSearch(this.props.params.movieTitle)
 	},
 	render(){
 		return (
