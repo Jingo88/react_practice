@@ -1,11 +1,38 @@
 import React from 'react';
 
+var styles = {
+
+}
+
+function MoviePoster(props){
+	return props.data === "N/A"
+		? <img src="http://www.nyctransitforums.com/forums/fcontent/default.png" />
+		: <img src={props.data} />
+}
+
+function MovieUI(props){
+	
+	console.log(props)
+	return(
+		<div>
+			<MoviePoster 
+				data = {props.data.Poster}/>
+			<ul>
+				<li>{props.data.Title}</li>
+				<li>{props.data.Year}</li>
+				<li>{props.data.Type}</li>
+			</ul>
+		</div>
+	)
+}
+
 function EachMovie(props){
-	// console.log(props)
+	
 	return (
 		<div>
 			{props.data.map(function(movie){
-				return movie.Title
+				return <MovieUI 
+								data={movie}/>
 			})}
 		</div>
 	)
