@@ -17,7 +17,8 @@ const MovieListContainer = React.createClass({
 	},
 	render(){
 		return (
-			<MovieList />
+			<MovieList 
+				{...this.props}/>
 		)
 	}
 })
