@@ -9,6 +9,8 @@ function singleSearch(title, year){
 
 	return axios.get(endpoint)
 		.then(function(response){
+			console.log('WE ARE IN SINGLE SEARCH')
+			console.log(response)
 			return response
 		})
 		.catch(function(err){

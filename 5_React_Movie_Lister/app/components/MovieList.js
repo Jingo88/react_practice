@@ -11,13 +11,13 @@ var styles = {
 
 function MovieDetails(props){
 	return (
-				<div className="card-reveal">
-      		<span className="card-title grey-text text-darken-4">
-      			movie details
-      			
-      			<i className="material-icons right">close</i>
-      		</span>
-    		</div>
+		<div className="card-reveal">
+  		<span className="card-title grey-text text-darken-4">
+  			{props.data.Title}
+  			
+  			<i className="material-icons right">close</i>
+  		</span>
+		</div>
 			
 	)
 }
@@ -29,7 +29,6 @@ function MoviePoster(props){
 }
 
 function MovieUI(props){
-	
 	return(
 		<div className="col s12 m4">
 			<div className="card large">
@@ -50,7 +49,8 @@ function MovieUI(props){
 					<a href="#">Share</a>
 				</div>
 
-				<MovieDetails />
+				<MovieDetails 
+					data={props.data}/>
 			</div>
 
 
@@ -72,7 +72,7 @@ function EachMovie(props){
 
 function MovieList(props){
 	// console.log('MOVIE LIST PRESENTATIONAL')
-	console.log(props)
+	// console.log(props)
 	// console.log(props.moviesInfo)
 	// console.log('MOVIE LIST PRESENTATIONAL PART 2')
 	return props.loading === true
