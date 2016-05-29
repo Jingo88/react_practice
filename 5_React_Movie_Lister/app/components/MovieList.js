@@ -9,6 +9,15 @@ var styles = {
 	}
 }
 
+	// getSingleMovie(title, year){
+	// 	singleSearch(title, year)
+	// 		.then(function(data){
+	// 			this.setState({
+	// 				detail: data
+	// 			})
+	// 		})
+	// },
+
 function MovieDetails(props){
 	return (
 		<div className="card-reveal">

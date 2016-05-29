@@ -42,13 +42,12 @@ const MovieListContainer = React.createClass({
 					detail: data
 				})
 			})
-	}
+	},
 	render(){
 		return (
 			<MovieList 
 				loading = {this.state.loading}
 				moviesInfo = {this.state.movies}
-				on
 				detailInfo = {this.state.detail}/>
 		)
 	}
