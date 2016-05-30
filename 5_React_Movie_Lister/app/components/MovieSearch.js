@@ -1,30 +1,13 @@
 import React from 'react'
 
-function SearchBar(props){
-	return (
-		<div className="row">
-	    <form className="col s6 offset-s3">
-	    	<input 
-	    		placeholder="Enter Movie Title" 
-	    		type="text"
-	    		className="validate"/>
-
-	    	<input 
-	    		type="submit"
-	    		hidden/>
-	    </form>
-	  </div>
-	)
-}
-
 function MovieSearch(props){
 	return (
 
 		<div className="row">
-	    <form className="col s6 offset-s3"
+	    <form className="col s10 offset-s2 m4 offset-m4"
 	    	onSubmit = {props.onSubmitMovie}>
 	    	<input 
-	    		placeholder="Find Yourself A Movie" 
+	    		placeholder="Movie / TV Show Title" 
 	    		type="text"
 	    		className="validate"
 	    		onChange = {props.onUpdateMovie}/>

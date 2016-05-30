@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 var styles = {
 	navBar: {
-		backgroundColor: "#F4F1BB",
+		backgroundColor: "#F2EFEA",
 	},
 	fontColor: {
 		color: "#ED6A5A",
@@ -26,7 +26,7 @@ const Main = React.createClass({
 				  	<Link 
 				  		to='/'
 				  		style={styles.logo}> 
-				  		Moovies 
+				  		Movie Lister
 				  	</Link>
 				    
 				    <ul 

@@ -1,5 +1,11 @@
 import React from 'react';
 
+var styles = {
+	details: {
+		color: "#ED6A5A"
+	}
+}
+
 function MovieDetails(props){
 	
 	let movieInfo = props.movieInfo.data
@@ -7,7 +13,7 @@ function MovieDetails(props){
 
 	return props.loading === true
 		? <div className="card-reveal">
-  			<span className="card-title grey-text text-darken-4">
+  			<span className="card-title center">
 	  			<div className="preloader-wrapper big active">
 			      <div className="spinner-layer spinner-red">
 			        <div className="circle-clipper left">
@@ -24,24 +30,25 @@ function MovieDetails(props){
   			<i className="material-icons right">close</i>
   			</span>
 			</div>
-		: <div className="card-reveal">
+		: <div className="card-reveal" style={styles.details}>
   			<span className="card-title grey-text text-darken-4">  			
   				{movieInfo.Title}
   			<i className="material-icons right">close</i>
   			</span>
-  			<ul>
-  					<li>Genre: {movieInfo.Genre}</li>
-	  				<li>Rated: {movieInfo.Rated}</li>
-	  				<li>Year: {movieInfo.Year}</li>
-	  				<li>Released Date: {movieInfo.Released}</li>
-	  				<li>IMDB Rating: {movieInfo.imdbRating}</li>
-	  				<li>Runtime: {movieInfo.Runtime}</li>
-	  				<li>Type: {movieInfo.Type}</li>
+  				<p><strong>Director:</strong> {movieInfo.Director}</p>
+  				<p><strong>Writer:</strong> {movieInfo.Writer}</p>
+  				<p><strong>Actors:</strong> {movieInfo.Actors}</p>
+  				<p>Plot: {movieInfo.Plot}</p>
+  				<ul>
+  					<li><strong>Genre:</strong> {movieInfo.Genre}</li>
+	  				<li><strong>Rated:</strong> {movieInfo.Rated}</li>
+	  				<li><strong>Year:</strong> {movieInfo.Year}</li>
+	  				<li><strong>Released Date:</strong> {movieInfo.Released}</li>
+	  				<li><strong>IMDB Rating:</strong> {movieInfo.imdbRating}</li>
+	  				<li><strong>Runtime:</strong> {movieInfo.Runtime}</li>
+	  				<li><strong>Type:</strong> {movieInfo.Type}</li>
 	  			</ul>
-	  			<p>{movieInfo.Plot}</p>
-	  			<p>{movieInfo.Actors}</p>
-	  			<p>{movieInfo.Writer}</p>
-	  			<p>{movieInfo.Director}</p>
+	  			
 			</div>
 		
 }

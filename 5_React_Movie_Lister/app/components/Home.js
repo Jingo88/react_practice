@@ -10,8 +10,10 @@ function Home(props){
 		<div
 			className="container">
 			<div className="row">
-				<h1> Welcome to Movie Lister </h1>
-				<MovieSearchContainer/>
+				<div className="col s12 m10 offset-m1">
+					<h1> Welcome to Movie Lister </h1>
+					<MovieSearchContainer/>
+				</div>
 			</div>
 		</div>
 	)
