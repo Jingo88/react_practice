@@ -1,5 +1,7 @@
 import React from 'react';
 
+import MovieDetailsContainer from '../containers/MovieDetailsContainer';
+
 import { singleSearch, multiSearch} from '../helpers/movieHelpers'; 
 
 var styles = {
@@ -9,14 +11,7 @@ var styles = {
 	}
 }
 
-	// getSingleMovie(title, year){
-	// 	singleSearch(title, year)
-	// 		.then(function(data){
-	// 			this.setState({
-	// 				detail: data
-	// 			})
-	// 		})
-	// },
+
 
 function MovieDetails(props){
 	return (
