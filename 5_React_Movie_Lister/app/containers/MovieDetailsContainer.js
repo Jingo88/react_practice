@@ -14,6 +14,12 @@ import { singleSearch, multiSearch} from '../helpers/movieHelpers';
 	// },
 
 const MovieDetailsContainer = React.createClass({
+	componentWillReceiveProps(){
+
+	},
+	getSingleMovie(title,year){
+
+	},
 	render(){
 		return (
 			<MovieDetails />
