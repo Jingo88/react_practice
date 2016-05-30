@@ -11,21 +11,6 @@ var styles = {
 	}
 }
 
-
-
-function MovieDetails(props){
-	return (
-		<div className="card-reveal">
-  		<span className="card-title grey-text text-darken-4">
-  			{props.data.Title}
-  			
-  			<i className="material-icons right">close</i>
-  		</span>
-		</div>
-			
-	)
-}
-
 function MoviePoster(props){
 	return props.data === "N/A"
 		? <img style={styles.posterImage} className="activator" src="http://www.nyctransitforums.com/forums/fcontent/default.png" />
@@ -63,7 +48,6 @@ function MovieUI(props){
 }
 
 function EachMovie(props){
-	
 	return (
 		<div className="row">
 			{props.data.map(function(movie){
@@ -75,10 +59,6 @@ function EachMovie(props){
 }
 
 function MovieList(props){
-	// console.log('MOVIE LIST PRESENTATIONAL')
-	// console.log(props)
-	// console.log(props.moviesInfo)
-	// console.log('MOVIE LIST PRESENTATIONAL PART 2')
 	return props.loading === true
 		? <h1> LOADING </h1>
 		: <div className = "container">
