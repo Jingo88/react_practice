@@ -53,8 +53,8 @@ function MovieUI(props){
 					<a href="#">Share</a>
 				</div>
 
-				<MovieDetails 
-					data={props.data}/>
+				<MovieDetailsContainer data={props.data} />
+				
 			</div>
 
 
