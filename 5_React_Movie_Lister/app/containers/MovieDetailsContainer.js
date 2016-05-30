@@ -3,6 +3,17 @@ import MovieDetails from "../components/MovieDetails";
 
 import { singleSearch, multiSearch} from '../helpers/movieHelpers';
 
+var styles = {
+	details: {
+		color: "#ED6A5A"
+	},
+	mTitle: {
+		color: '#ED6A5A',
+		fontWeight: '700',
+		textDecoration: "underline"
+	}
+}
+
 const MovieDetailsContainer = React.createClass({
 	getInitialState(){
 		return{

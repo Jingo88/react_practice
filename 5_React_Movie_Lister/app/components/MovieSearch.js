@@ -7,7 +7,7 @@ function MovieSearch(props){
 	    <form className="col s10 offset-s2 m4 offset-m4"
 	    	onSubmit = {props.onSubmitMovie}>
 	    	<input 
-	    		placeholder="Movie / TV Show Title" 
+	    		placeholder="Enter Movie or TV Show Title" 
 	    		type="text"
 	    		className="validate"
 	    		onChange = {props.onUpdateMovie}/>

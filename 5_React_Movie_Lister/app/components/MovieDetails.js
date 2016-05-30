@@ -3,6 +3,11 @@ import React from 'react';
 var styles = {
 	details: {
 		color: "#ED6A5A"
+	},
+	mTitle: {
+		color: '#ED6A5A',
+		fontWeight: '700',
+		textDecoration: "underline"
 	}
 }
 
@@ -31,14 +36,14 @@ function MovieDetails(props){
   			</span>
 			</div>
 		: <div className="card-reveal" style={styles.details}>
-  			<span className="card-title grey-text text-darken-4">  			
+  			<span className="card-title" style={styles.mTitle}>  			
   				{movieInfo.Title}
   			<i className="material-icons right">close</i>
   			</span>
   				<p><strong>Director:</strong> {movieInfo.Director}</p>
   				<p><strong>Writer:</strong> {movieInfo.Writer}</p>
   				<p><strong>Actors:</strong> {movieInfo.Actors}</p>
-  				<p>Plot: {movieInfo.Plot}</p>
+  				<p><strong>Plot:</strong> {movieInfo.Plot}</p>
   				<ul>
   					<li><strong>Genre:</strong> {movieInfo.Genre}</li>
 	  				<li><strong>Rated:</strong> {movieInfo.Rated}</li>
