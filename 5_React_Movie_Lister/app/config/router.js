@@ -8,6 +8,12 @@ import MovieListContainer from '../containers/MovieListContainer';
 // browser history returns a "Cannot GET /movies" why?
 // figure it out later?
 
+// Main component has the nav bar, and will take in children, home and movie list
+// Index Route will be the Home Container
+// Home container will incorporate the Movie Search Container
+// Once a search is done the MovieListContainer will render
+// Inside the MovieListContainer will render the MovieDetailsContainer
+
 const router = (
 	<Router history={hashHistory}>
 		<Route path='/' component={Main}>

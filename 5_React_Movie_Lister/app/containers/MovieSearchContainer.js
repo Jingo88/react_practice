@@ -1,5 +1,6 @@
 import React from 'react';
 
+// import presentational component
 import MovieSearch from '../components/MovieSearch';
 
 
@@ -7,15 +8,17 @@ const MovieSearchContainer = React.createClass({
 	contextTypes:{
 		router: React.PropTypes.object.isRequired
 	},
+	// Make a boolean value called "search". 
+	// Will help with loading screen and when to update component
+	// Make empty string for the title the user searched
 	getInitialState(){
 		return {
 			search: true,
 			movieTitle: ""
 		}
 	},
+	
 	handleSubmitMovie(event){
-		// event.preventDefault()
-		
 		if (this.state.movieTitle === ""){
 			this.setState({
 				search: false,
