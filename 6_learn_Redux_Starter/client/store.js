@@ -7,15 +7,20 @@ import rootReducer from './reducers/index';
 import comments from './data/comments';
 import posts from './data/posts';
 
+// Pull in the posts and comments data from other files.
 const defaultState = {
 	posts,
 	comments
 };
 
+// Createstore is a method that connects the reducer to the default state
 const store = createStore(rootReducer, defaultState);
 
+// export const history
 export const history = syncHistoryWithStore(browserHistory, store);
 
+
+// Allows for hot reloading
 if(module.hot){
 	module.hot.accept('./reducers/', () =>{
 		const nextRootReducer = require('./reducers/index').default;

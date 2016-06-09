@@ -8,6 +8,8 @@ import App from './components/App';
 import Single from './components/Single';
 import PhotoGrid from './components/PhotoGrid';
 
+// Provider from react redux allows us to connect our components to the store 
+// We use this by wrapping the root component, it will grab all the child components as well
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import store, { history } from './store';
@@ -26,6 +28,7 @@ const router = (
   
 )
 
+//render is as "ReactDOM.render"
 render(router, document.getElementById('root'));
 
 
