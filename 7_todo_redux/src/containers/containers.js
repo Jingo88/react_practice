@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import * as components from './components';
-import {addTodo, toggleTodo} from './actions';
+import * as components from '../components/components';
+import {addTodo, toggleTodo} from '../actions/actions';
 
 export const TodoList = connect(
 	// takes stores current state as argument. 

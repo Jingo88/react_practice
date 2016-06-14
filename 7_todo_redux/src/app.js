@@ -4,7 +4,7 @@ import {List, Map} from 'immutable';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux'; 
 import reducer from './reducer';
-import {TodoList} from './containers.js';
+import {TodoList} from './containers/containers.js';
 
 // const dummyTodos = [
 //   { id: 0, isDone: true,  text: 'make components' },
