@@ -2,6 +2,8 @@ import {List, Map} from 'immutable';
 
 const init = List([])
 
+// if we had more reducers we would use "combineReducers()"
+
 export default function reducer(todos = init, action){
 	switch(action.type){
 		case 'ADD_TODO':

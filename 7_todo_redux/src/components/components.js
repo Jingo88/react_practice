@@ -29,7 +29,7 @@ export function TodoList(props){
 	return (
 		<div className='todo'>
 			<input type='text' 
-					placeholde='Add Todo Item' 
+					placeholder='Add Todo Item' 
 					className = 'todo__entry'
 					onKeyDown = {onSubmit}/>
 			<ul className='todo__list'>

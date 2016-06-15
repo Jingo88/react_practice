@@ -75,8 +75,12 @@
 
 	var dummyTodos = (0, _immutable.List)([(0, _immutable.Map)({ id: 0, isDone: true, text: 'make components' }), (0, _immutable.Map)({ id: 1, isDone: false, text: 'design actions' }), (0, _immutable.Map)({ id: 2, isDone: false, text: 'implement reducer' }), (0, _immutable.Map)({ id: 3, isDone: false, text: 'connect components' })]);
 
-	var store = (0, _redux.createStore)(_reducer2.default);
+	// root component sents up the store
+	// reducer passed in is the root reducer
+	var store = (0, _redux.createStore)(_reducer2.default, dummyTodos);
 
+	// Provider is from react-redux
+	// Used to connect the store and the Provider (which wraps our sub components)
 	(0, _reactDom.render)(_react2.default.createElement(
 	  _reactRedux.Provider,
 	  { store: store },
@@ -22248,6 +22252,8 @@
 
 	var init = (0, _immutable.List)([]);
 
+	// if we had more reducers we would use "combineReducers()"
+
 	function reducer() {
 		var todos = arguments.length <= 0 || arguments[0] === undefined ? init : arguments[0];
 		var action = arguments[1];
@@ -22384,7 +22390,7 @@
 			'div',
 			{ className: 'todo' },
 			_react2.default.createElement('input', { type: 'text',
-				placeholde: 'Add Todo Item',
+				placeholder: 'Add Todo Item',
 				className: 'todo__entry',
 				onKeyDown: onSubmit }),
 			_react2.default.createElement(

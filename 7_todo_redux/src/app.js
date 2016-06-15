@@ -20,8 +20,13 @@ const dummyTodos = List([
   Map({ id: 3, isDone: false, text: 'connect components' })
 ]);
 
-const store = createStore(reducer);
+// root component sents up the store
+// reducer passed in is the root reducer
+const store = createStore(reducer, dummyTodos);
 
+
+// Provider is from react-redux
+// Used to connect the store and the Provider (which wraps our sub components)
 render(
 	<Provider store = {store}>
 		<TodoList />
