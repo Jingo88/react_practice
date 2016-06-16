@@ -4,6 +4,11 @@ const init = List([])
 
 // if we had more reducers we would use "combineReducers()"
 
+// view requests an action
+// actions file adjusts the type and payload
+// the action is either dispatched or sent back to the view for dispatch
+// the store receives the action and sends it HERE to the reducer
+
 export default function reducer(todos = init, action){
 	switch(action.type){
 		case 'ADD_TODO':
