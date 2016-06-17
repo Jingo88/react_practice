@@ -1,8 +1,5 @@
 import React from 'react';
 import {render} from 'react-dom';
-// import {Router, Route, IndexRoute, browserHistory, hashHistory} from 'react-router';
-import {HomeContainer} from './containers/HomeContainer'
-// var router = require('./config/router');
 import routes from './config/router';
 
 const seedToDo = [
@@ -11,13 +8,6 @@ const seedToDo = [
   { id: 2, isDone: false, text: 'implement reducer' },
   { id: 3, isDone: false, text: 'connect components' }
 ]
-
-// render(
-// 	routes,
-// 	document.getElementById('app')
-// );
-
-console.log(routes)
 
 render(
 	routes, 
