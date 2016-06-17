@@ -1,10 +1,17 @@
 import React from 'react';
+import Book from '../components/BookComponent'
+import NoteContainer from './NoteContainer'
 
 const BookContainer = React.createClass({
 	render(){
 		return (
-			<div className="col s6">
-				<h1>We are in the book container </h1>
+			<div>
+				<div className='col s6'>
+					<Book/>
+				</div>
+				<div className='col s6'>
+					<NoteContainer/>
+				</div>		
 			</div>
 		)
 	}
