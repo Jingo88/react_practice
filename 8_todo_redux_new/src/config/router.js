@@ -5,14 +5,19 @@ import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 import MainContainer from '../containers/MainContainer'
 import HomeContainer from '../containers/HomeContainer'
 
+import {Provider} from 'react-redux';
+import store from '../store'
+
 const routes = (
-	<Router history={hashHistory}>
-		<Route path='/' component={MainContainer}>
-			<IndexRoute component={HomeContainer}>
-				
-			</IndexRoute>
-		</Route>
-	</Router>
+	<Provider store={store}>
+		<Router history={hashHistory}>
+			<Route path='/' component={MainContainer}>
+				<IndexRoute component={HomeContainer}>
+					
+				</IndexRoute>
+			</Route>
+		</Router>
+	</Provider>
 )
 
 export default routes;
