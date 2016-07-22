@@ -66,19 +66,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// const dummyTodos = [
-	//   { id: 0, isDone: true,  text: 'make components' },
-	//   { id: 1, isDone: false, text: 'design actions' },
-	//   { id: 2, isDone: false, text: 'implement reducer' },
-	//   { id: 3, isDone: false, text: 'connect components' }
-	// ];
-
 	var dummyTodos = (0, _immutable.List)([(0, _immutable.Map)({ id: 0, isDone: true, text: 'make components' }), (0, _immutable.Map)({ id: 1, isDone: false, text: 'design actions' }), (0, _immutable.Map)({ id: 2, isDone: false, text: 'implement reducer' }), (0, _immutable.Map)({ id: 3, isDone: false, text: 'connect components' })]);
 
 	// root component sents up the store
 	// reducer passed in is the root reducer
 	var store = (0, _redux.createStore)(_reducer2.default, dummyTodos);
 
+	console.log(store.getState());
 	// Provider is from react-redux
 	// Used to connect the store and the Provider (which wraps our sub components)
 	(0, _reactDom.render)(_react2.default.createElement(
@@ -22254,6 +22248,11 @@
 
 	// if we had more reducers we would use "combineReducers()"
 
+	// view requests an action
+	// actions file adjusts the type and payload
+	// the action is either dispatched or sent back to the view for dispatch
+	// the store receives the action and sends it HERE to the reducer
+
 	function reducer() {
 		var todos = arguments.length <= 0 || arguments[0] === undefined ? init : arguments[0];
 		var action = arguments[1];
@@ -22368,6 +22367,7 @@
 		var addTodo = props.addTodo;
 
 
+		console.log(props);
 		var onSubmit = function onSubmit(event) {
 			var input = event.target;
 			var text = input.value;
@@ -22424,6 +22424,11 @@
 	  return Math.random().toString(34).slice(2);
 	};
 
+	// type property helps us decide what to do with the payload when we process the action
+
+	// action creators are NOT actions
+	// Redux Action Creators RETURN an action
+	// In our containers file we map the dispatch of these actions or props
 	function addTodo(text) {
 	  return {
 	    type: 'ADD_TODO',
@@ -22441,27 +22446,6 @@
 	    payload: id
 	  };
 	}
-
-	// // create some unique identifiers
-	// const uid = () => Math.random().toString(34).slice(2);
-
-	// export function addTodo(text){
-	// 	return {
-	// 		type: "ADD_TODO",
-	// 		payload: {
-	// 			id: uid(),
-	// 			isDone: false,
-	// 			text: text
-	// 		}
-	// 	};
-	// }
-
-	// export function toggleTodo(id){
-	// 	return {
-	// 		type: "TOGGLE_TODO",
-	// 		payload: id
-	// 	};
-	// }
 
 /***/ }
 /******/ ]);

@@ -2,6 +2,8 @@ import React from 'react';
 
 const MainContainer = React.createClass({
 	render(){
+		// console.log("MAINCONTAINER")
+		// console.log(this.props)
 		return (
 			<div>
 				<nav>

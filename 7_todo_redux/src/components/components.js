@@ -12,6 +12,7 @@ export function Todo(props){
 export function TodoList(props){
 	const {todos, toggleTodo, addTodo} = props;
 
+	console.log(props)
 	const onSubmit = (event) => {
 		const input = event.target;
 		const text = input.value;

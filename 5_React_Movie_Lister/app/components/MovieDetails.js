@@ -14,7 +14,6 @@ var styles = {
 function MovieDetails(props){
 	
 	let movieInfo = props.movieInfo.data
-	console.log(movieInfo)
 
 	return props.loading === true
 		? <div className="card-reveal">

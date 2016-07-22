@@ -29,3 +29,6 @@ export default function reducer(todos = init, action){
 			return todos;
 	}
 }
+
+// what is your previous state + what is the action should lead to a new state
+// reducers should stay PURE
