@@ -14,6 +14,7 @@ function posts(state = [], action) {
       	...state.slice(i + 1)
       ];
     default:
+      console.log(state)
       return state;
   }
 }

@@ -1,6 +1,8 @@
+import {combineReducers} from 'redux';
+import {routerReducer} from 'react-router-redux';
 import {List, Map} from 'immutable';
 
-const init = List([])
+const init = []
 
 // if we had more reducers we would use "combineReducers()"
 
@@ -9,7 +11,7 @@ const init = List([])
 // the action is either dispatched or sent back to the view for dispatch
 // the store receives the action and sends it HERE to the reducer
 
-export default function reducer(todos = init, action){
+function todoReducer(todos = init, action){
 	switch(action.type){
 		case 'ADD_TODO':
 			//convert to immutable Map object before pushing to todos
@@ -26,9 +28,25 @@ export default function reducer(todos = init, action){
 				}
 			})
 		default: 
+			console.log(todos)
 			return todos;
 	}
 }
 
+// function counter(state = 0, action) {
+//   switch (action.type) {
+//     case 'INCREMENT':
+//       return state + 1
+//     case 'DECREMENT':
+//       return state - 1
+//     default:
+//       return state
+//   }
+// }
+
+const rootReducer = combineReducers({todoReducer, routing: routerReducer})
+
+export default rootReducer;
 // what is your previous state + what is the action should lead to a new state
 // reducers should stay PURE
+

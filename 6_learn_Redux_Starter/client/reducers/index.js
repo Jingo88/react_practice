@@ -5,5 +5,6 @@ import posts from './posts';
 import comments from './comments';
 
 const rootReducer = combineReducers({posts,comments,routing: routerReducer });
+console.log(rootReducer)
 
 export default rootReducer

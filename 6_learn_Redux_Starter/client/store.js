@@ -13,12 +13,13 @@ const defaultState = {
 	comments
 };
 
+console.log(defaultState)
+console.log(rootReducer)
 // Createstore is a method that connects the reducer to the default state
 const store = createStore(rootReducer, defaultState);
 
 // export const history
 export const history = syncHistoryWithStore(browserHistory, store);
-
 
 // Allows for hot reloading
 if(module.hot){
