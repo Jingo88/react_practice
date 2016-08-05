@@ -28,21 +28,9 @@ function todoReducer(todos = init, action){
 				}
 			})
 		default: 
-			console.log(todos)
 			return todos;
 	}
 }
-
-// function counter(state = 0, action) {
-//   switch (action.type) {
-//     case 'INCREMENT':
-//       return state + 1
-//     case 'DECREMENT':
-//       return state - 1
-//     default:
-//       return state
-//   }
-// }
 
 const rootReducer = combineReducers({todoReducer, routing: routerReducer})
 

@@ -6,15 +6,15 @@ import {Provider} from 'react-redux';
 import store, {history} from '../store'
 import MapperContainer from '../containers/MapperContainer';
 import Main from '../components/Main'
-import CompleteContainer from '../containers/CompleteContainer';
+import TodoList from '../containers/TodoListContainer';
 
 
 const router = (
 	<Provider store={store}>
 		<Router history={history}>
 			<Route path='/' component={MapperContainer}>
-				<IndexRoute component={Main}></IndexRoute>
-				<Route component={CompleteContainer}></Route>
+				<IndexRoute component={TodoList}></IndexRoute>
+				<Route component={Main}></Route>
 			</Route>
 		</Router>
 	</Provider>
