@@ -12,6 +12,8 @@ const init = []
 // the store receives the action and sends it HERE to the reducer
 
 function todoReducer(todos = init, action){
+	console.log('THIS IS OUR TODOS IN REDUCER')
+	console.log(todos)
 	switch(action.type){
 		case 'ADD_TODO':
 			//convert to immutable Map object before pushing to todos
