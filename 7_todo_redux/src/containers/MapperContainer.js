@@ -2,6 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {addTodo, toggleTodo} from '../actions/actions';
 import Main from '../components/Main';
+// import * as actionCreators from '../actions/actions'
 
 function mapStateToProps(state){
 	return {todos: state}
@@ -14,7 +15,10 @@ function mapDispatchToProps(dispatch){
 	}
 };
 
+// function mapDispatchToProps(dispatch){
+// 	return bindActionCreators(actionCreators, dispatch);
+// }
 
-const TodoListContainer = connect(mapStateToProps, mapDispatchToProps)(Main);
+const ToDoListContainer = connect(mapStateToProps, mapDispatchToProps)(Main);
 
-export default TodoListContainer;
+export default ToDoListContainer;

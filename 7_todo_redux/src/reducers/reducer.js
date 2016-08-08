@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
 import {List, Map} from 'immutable';
 
-const init = []
+const init = List();
 
 // if we had more reducers we would use "combineReducers()"
 
@@ -11,16 +11,13 @@ const init = []
 // the action is either dispatched or sent back to the view for dispatch
 // the store receives the action and sends it HERE to the reducer
 
-function todoReducer(todos = init, action){
-	console.log('THIS IS OUR TODOS IN REDUCER')
-	console.log(todos)
+function todoReducer(state = init, action){
 	switch(action.type){
 		case 'ADD_TODO':
-			//convert to immutable Map object before pushing to todos
-			return todos.push(Map(action.payload));
+			return state.push(Map(action.payload));
+
 		case 'TOGGLE_TODO':
-			// map through all the todos
-			return todos.map(t =>{
+			return state.map(t =>{
 				// if the id matches you found the one you're looking for
 				// change it's isDone boolean to true or false
 				if (t.get('id') === action.payload){
@@ -30,7 +27,7 @@ function todoReducer(todos = init, action){
 				}
 			})
 		default: 
-			return todos;
+			return state;
 	}
 }
 

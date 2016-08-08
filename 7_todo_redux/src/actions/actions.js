@@ -6,9 +6,7 @@ const uid = () => Math.random().toString(34).slice(2);
 // Redux Action Creators RETURN an action
 // In our containers file we map the dispatch of these actions or props
 export function addTodo(text) {
-  console.log('we are in add todo')
-  console.log(text)
-  let newText = {
+  return {
     type: 'ADD_TODO',
     payload: {
       id: uid(),
@@ -16,8 +14,6 @@ export function addTodo(text) {
       text: text
     }
   };
-  console.log(newText)
-  return newText
   
 }
 
