@@ -1,67 +1,27 @@
-import { combineReducers } from 'redux';
-import {
-	SELECT_SUBREDDIT,
-	INVALIDATE_SUBREDDIT,
-	REQUEST_POSTS,
-	RECEIVE_POSTS
-} from '../actions'
+import {combineReducers} from 'redux';
+import {routerReducer} from 'react-router-redux';
 
-function selectedSubreddit(state='reactjs', action){
+const init = [];
+
+function redditReducer(state=init, action){
+	// console.log('we are in reddit reducer!!!!')
+	// console.log(state)
 	switch(action.type){
-		case SELECT_SUBREDDIT:
-			return action.subreddit 
-		default: 
-			return state
-	}
+		case 'ADD_HEADLINE':
+			// console.log('REDDIT REDUCER ADD HEADLINE CASE')
+			// console.log(action.payload)
+			let newState = [];
+			let data = action.payload
+			console.log(data)
+			data.map(headline => {
+				return newState.push(headline)
+			})
+			return newState
+	default: 
+		return state;
+	}	
 }
 
-function posts(state={
-	isFetching: false,
-	didInvalidate: false,
-	items: []
-}, action){
-	switch(action.type){
-		case INVALIDATE_SUBREDDIT:
-			return Object.assign({}, state, {
-				didInvalidate: true
-			})
-		case REQUEST_POSTS:
-			return Object.assign({}, state, {
-				isFetching: true,
-				didInvalidate: false
-			})
-		case RECEIVE_POSTS:
-			return Object.assign({}, state, {
-				isFetching: false,
-				didInvalidate: false,
-				items: action.posts,
-				lastUpdated: action.receivedAt
-			})
-		default:
-			return state
-	}
-}
+const rootReducer = combineReducers({redditReducer: redditReducer, routing: routerReducer})
 
-function postsBySubreddit(state = {}, action{
-	switch(action.type){
-		case INVALIDATE_SUBREDDIT:
-		case RECEIVE_POSTS: 
-		case REQUEST_POSTS:
-			return Object.assign({}, state, {
-				[action.subreddit]: posts(state[action.subreddit], action)
-			})
-			// above is equivalent to this
-			// let nextState = {}
-			// nextState[action.subreddit] = posts(state[action.subreddit]	, action)
-			// return Object.assign({}, state, nextState)
-		default:
-			return state
-	}
-})
-
-const rootReducer = combineReducers({
-	postsBySubreddit,
-	selectedSubreddit
-})
-
-export default rootReducer
+export default rootReducer;

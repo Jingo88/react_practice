@@ -1,7 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+import router from './config/router';
+
 render(
-	<h1>Hello World</h1>,
+	router,
 	document.getElementById('app')
 )

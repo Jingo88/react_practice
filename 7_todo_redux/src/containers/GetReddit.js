@@ -32,25 +32,6 @@ const GetReddit = React.createClass({
 					console.log(headline.data)
 					this.props.addHeadline(headline.data)
 				})
-				// this.props.addHeadline(data.data.data.children)
-				// let legislators = data.data.results
-				// let legislatorsArr = []
-				// let legislatorLastNameArr = []
-
-				// legislators.map(function(person){
-				// 	legislatorsArr.push({
-				// 		bioguideID : person["bioguide_id"],
-				// 		first_name: person["first_name"],
-				// 		last_name: person["last_name"],
-				// 		state:person["state"]
-				// 	})
-				// legislatorLastNameArr.push(person["last_name"])
-				// })
-
-				// this.setState({
-				// 	legislatorsArr : legislatorsArr,
-				// 	legislatorLastNameArr : legislatorLastNameArr
-				// })
 			}.bind(this))
 	},
 	render(){

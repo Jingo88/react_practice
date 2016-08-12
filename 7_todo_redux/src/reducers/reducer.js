@@ -57,6 +57,9 @@ function redditReducer(state=init, action){
 		case 'ADD_HEADLINE':
 			console.log('REDDIT REDUCER ADD HEADLINE CASE')
 			console.log(action.payload)
+			
+			console.log(state)
+			return state.push(action.payload)
 			// if (state.length < 100){
 				
 			// } else {
