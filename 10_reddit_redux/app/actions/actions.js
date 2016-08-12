@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch'
+
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
 
 export function selectSubreddit(subreddit){
@@ -35,3 +37,31 @@ export function receivePosts(subreddit, json){
 		receivedAt: Date.now()
 	}
 }
+
+export function fetchPosts(subreddit){
+	return function(dispatch){
+		dispatch(requestPosts(subreddit))
+
+		return fetch('http://www.reddit.com/r/${subreddit}.json')
+						.then(response => response.json())
+						.then(json =>
+
+							dispatch(receivePosts(subreddit,json))
+						)
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -21,9 +21,14 @@ const ToDoListContainer = React.createClass({
 			this.props.addTodo(text);
 		}
 	},
+	onDelete(event){
+		this.props.deleteTodo(event.target.id);
+	},
 	render(){
+		console.log('inside todo list container')
+		console.log(this)
 		// const {todos, toggleTodo, addTodo} = this.props;
-		const todos = this.props.todos.todoReducer;
+		const todos = this.props.state.todoReducer;
 		const toggleTodo = this.props.toggleTodo;
 		const addTodo = this.props.addTodo;
 
@@ -41,7 +46,8 @@ const ToDoListContainer = React.createClass({
 						<li key={t.get('id')} 
 							className='todo__item'
 							onClick = {toggleClick(t.get('id'))}>
-							<Todo todo={t.toJS()} />
+							<Todo todo={t.toJS()}/>
+							<button id={t.get('id')} onClick={this.onDelete}>Delete</button>
 						</li>
 					))}
 				</ul>
@@ -51,52 +57,3 @@ const ToDoListContainer = React.createClass({
 })
 
 export default ToDoListContainer;
-
-
-// export function Todo(props){
-// 	const {todo} = props;
-// 	if (todo.isDone){
-// 		return <strike>{todo.text} </strike>;
-// 	} else{
-// 		return <span> {todo.text} </span>;
-// 	}
-// }
-
-// export function TodoList(props){
-// 	const {todos, toggleTodo, addTodo} = props;
-	
-// 	console.log(props)
-// 	const onSubmit = (event) => {
-// 		const input = event.target;
-// 		const text = input.value;
-// 		const isEnterKey = (event.which ===13 );
-// 		const isLongEnough = text.length > 0
-
-// 		if(isEnterKey && isLongEnough){
-// 			input.value = "";
-// 			addTodo(text);
-// 		}
-// 	};
-
-// 	const toggleClick = id => event => toggleTodo(id);
-
-// 	return (
-// 		<div className='todo'>
-// 			<input type='text' 
-// 					placeholder='Add Todo Item' 
-// 					className = 'todo__entry'
-// 					onKeyDown = {onSubmit}/>
-// 			<ul className='todo__list'>
-// 				{todos.map(t => (
-// 					<li key={t.get('id')} 
-// 						className='todo__item'
-// 						onClick = {toggleClick(t.get('id'))}>
-// 						<Todo todo={t.toJS()} />
-// 					</li>
-// 				))}
-// 			</ul>
-// 		</div>
-// 	)
-// }
-
-

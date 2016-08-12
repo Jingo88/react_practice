@@ -23,3 +23,17 @@ export function toggleTodo(id) {
     payload: id
   };
 }
+
+export function deleteTodo(id){
+  return {
+    type: "DELETE_TODO",
+    payload: id
+  }
+}
+
+export function addHeadline(obj){
+  return{
+    type: "ADD_HEADLINE",
+    payload: obj
+  }
+}

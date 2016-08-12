@@ -12,6 +12,8 @@ const init = List();
 // the store receives the action and sends it HERE to the reducer
 
 function todoReducer(state = init, action){
+	console.log('we are in todoReducer')
+	console.log(state)
 	switch(action.type){
 		case 'ADD_TODO':
 			return state.push(Map(action.payload));
@@ -26,12 +28,50 @@ function todoReducer(state = init, action){
 					return t;
 				}
 			})
+
+		case 'DELETE_TODO':
+			console.log('we are in delete todo')
+			// console.log(action.payload)
+			// let i = state.indexOf(action.payload)
+			// console.log(i)
+
+			console.log(state)
+			state.map(item => {
+				// if (item.get('id') === action.payload){
+					console.log(item.get('id'))
+			})
+			return [
+				...state.slice(0,i),
+				...state.slice(i+1)
+			]
+
 		default: 
 			return state;
 	}
 }
 
-const rootReducer = combineReducers({todoReducer, routing: routerReducer})
+function redditReducer(state=init, action){
+	console.log('we are in reddit reducer!!!!')
+	console.log(state)
+	switch(action.type){
+		case 'ADD_HEADLINE':
+			console.log('REDDIT REDUCER ADD HEADLINE CASE')
+			console.log(action.payload)
+			// if (state.length < 100){
+				
+			// } else {
+				// return state
+			// }
+			
+			// return action.obj.map(headline=>{
+			// 	return headline
+			// })
+	default: 
+		return state;
+	}	
+}
+
+const rootReducer = combineReducers({todoReducer: todoReducer, redditReducer: redditReducer, routing: routerReducer})
 
 export default rootReducer;
 // what is your previous state + what is the action should lead to a new state

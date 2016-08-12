@@ -6,14 +6,14 @@ import {Provider} from 'react-redux';
 import store, {history} from '../store'
 import MapperContainer from '../containers/MapperContainer';
 import ToDoListContainer from '../containers/ToDoListContainer';
-import PageTwo from '../containers/Page2'
+import GetReddit from '../containers/GetReddit'
 
 const router = (
 	<Provider store={store}>
 		<Router history={history}>
 			<Route path='/' component={MapperContainer}>
 				<IndexRoute component={ToDoListContainer}></IndexRoute>
-				<Route path='/testing' component={PageTwo}></Route>
+				<Route path='/testing' component={GetReddit}></Route>
 			</Route>
 		</Router>
 	</Provider>

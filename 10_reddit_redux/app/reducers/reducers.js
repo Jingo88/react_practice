@@ -50,6 +50,10 @@ function postsBySubreddit(state = {}, action{
 			return Object.assign({}, state, {
 				[action.subreddit]: posts(state[action.subreddit], action)
 			})
+			// above is equivalent to this
+			// let nextState = {}
+			// nextState[action.subreddit] = posts(state[action.subreddit]	, action)
+			// return Object.assign({}, state, nextState)
 		default:
 			return state
 	}
