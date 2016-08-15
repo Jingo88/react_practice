@@ -8,7 +8,7 @@ function redditReducer(state=init, action){
 	// console.log(state)
 	switch(action.type){
 		case 'ADD_HEADLINE':
-			// console.log('REDDIT REDUCER ADD HEADLINE CASE')
+			console.log('REDDIT REDUCER ADD HEADLINE CASE')
 			// console.log(action.payload)
 			let newState = [];
 			let data = action.payload
@@ -16,6 +16,7 @@ function redditReducer(state=init, action){
 			data.map(headline => {
 				return newState.push(headline)
 			})
+			console.log(newState)
 			return newState
 	default: 
 		return state;

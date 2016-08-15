@@ -3,7 +3,7 @@ var axios = require('axios');
 
 import HomeComponent from '../components/HomeComponent'
 
-function getHeadlines(){
+function getHeadlinesFront(){
 	return axios.get('https://www.reddit.com/r/front.json')
 							.then(function(response){
 								console.log('hmmmm will this work? ')
@@ -12,7 +12,20 @@ function getHeadlines(){
 							})
 							.catch(function(err){
 								console.log(err)
-								console.log('We broke inside getHeadlines helper')
+								console.log('We broke inside getHeadlinesFront helper')
+							})
+}
+
+function getHeadlinesNews(){
+	return axios.get('https://www.reddit.com/r/news.json')
+							.then(function(response){
+								console.log('hmmmm will this work? ')
+								console.log(response)
+								return response
+							})
+							.catch(function(err){
+								console.log(err)
+								console.log('We broke inside getHeadlinesFront helper')
 							})
 }
 
@@ -24,7 +37,7 @@ const HomeContainer = React.createClass({
 	// 	this.getRedditHeadlines()
 	// },
 	getRedditHeadlines(){
-		getHeadlines()
+		getHeadlinesFront()
 			.then(function(data){
 				let headlines = data.data.data.children
 
@@ -35,13 +48,22 @@ const HomeContainer = React.createClass({
 				// })
 			}.bind(this))
 	},
+	handleNewsClick(){
+		getHeadlinesNews()
+			.then(function(data){
+				let headlines = data.data.data.children
+				console.log("we are in the handle news click function")
+				console.log(headlines)
+				this.props.addHeadline(headlines)
+			}.bind(this))
+	},
 	render(){
 		console.log("what the fuck")
 		console.log(this.props.state)
 		console.log(this.props.state.redditReducer)
 		return(
 			<div>
-				{this.props.state.redditReducer.length >0 ? <HomeComponent data={this.props.state.redditReducer}/> : <h1>Loading</h1>}
+				{this.props.state.redditReducer.length >0 ? <HomeComponent data={this.props.state.redditReducer} onNewsClick = {this.handleNewsClick}/> : <h1>Loading</h1>}
 			</div>
 		)
 	}
