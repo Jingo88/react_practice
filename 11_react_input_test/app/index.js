@@ -1,12 +1,58 @@
 // import React from 'react';
-// import { render } from 'react-dom';
+// import {render} from 'react-dom';
+// import Autosuggest from 'react-autosuggest';
 
-// import HomeContainer from './containers/HomeContainer';
+// const legislators = [
+//   {
+//   	first_name: "Elizabeth",
+//   	last_name: "Warren"
+//   },
+//   {
+//   	first_name: "Dean",
+//   	last_name: "Heller"
+//   },
+//   {
+//    	first_name: "John",
+//   	last_name: "Carney"
+//   },
+// ];
+
+// const getSuggestions = value => {
+//   const inputValue = value.trim().toLowerCase();
+//   const inputLength = inputValue.length;
+
+//   return inputLength === 0 ? [] : languages.filter(lang =>
+//     lang.name.toLowerCase().slice(0, inputLength) === inputValue
+//   );
+// };
+
+// function InputComponent(props){
+// 	return(
+// 		<section>
+// 			<form>
+// 				<input type='text' placeholder='Enter Some Shit'/>
+// 			</form>
+// 		</section>
+// 	)
+// }
+
+// var InputContainer = React.createClass({
+// 	render(){
+// 		return (
+// 			<InputComponent/>
+// 		)
+// 	}
+// })
 
 // render(
-// 	<HomeContainer/>,
+// 	<InputContainer/>,
 // 	document.getElementById('app')
-// );
+// )
+
+
+
+
+
 
 
 
