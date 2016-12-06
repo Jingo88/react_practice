@@ -108,19 +108,19 @@ class App extends React.Component {
     };    
   }
 
-  onChange = (event, { newValue, method }) => {
+  onChange(event, { newValue, method }) => {
     this.setState({
       value: newValue
     });
   };
   
-  onSuggestionsFetchRequested = ({ value }) => {
+  onSuggestionsFetchRequested({ value }) => {
     this.setState({
       suggestions: getSuggestions(value)
     });
   };
 
-  onSuggestionsClearRequested = () => {
+  onSuggestionsClearRequested() => {
     this.setState({
       suggestions: []
     });
