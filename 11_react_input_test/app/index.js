@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import Autosuggest from 'react-autosuggest';
 
-// Imagine you have a list of languages that you'd like to autosuggest.
 const names = [
   'Brian',
   'Caley',
@@ -10,7 +9,7 @@ const names = [
   'Caroline',
   'Chris',
   'David',
-  'Misha'  
+  'Misha'
 ];
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
@@ -18,7 +17,7 @@ const escapeRegexCharacters = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 const getSuggestions = value => {
   const escapedValue = escapeRegexCharacters(value.trim());
-  
+
   if (escapedValue === '') {
     return [];
   }
@@ -39,7 +38,6 @@ const renderInputComponent = inputProps => (
   </div>
 );
 
-
 class App extends React.Component {
   constructor() {
     super();
@@ -47,22 +45,25 @@ class App extends React.Component {
     this.state = {
       value: '',
       suggestions: []
-    };    
+    };
+    this.onChange                    = this.onChange.bind(this);
+    this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
+    this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
   }
 
-  onChange = (event, { newValue, method }) => {
+  onChange(event, { newValue, method }){
     this.setState({
       value: newValue
     });
   };
-  
-  onSuggestionsFetchRequested = ({ value }) => {
+
+  onSuggestionsFetchRequested({ value }){
     this.setState({
       suggestions: getSuggestions(value)
     });
   };
 
-  onSuggestionsClearRequested = () => {
+  onSuggestionsClearRequested(){
     this.setState({
       suggestions: []
     });
@@ -77,7 +78,7 @@ class App extends React.Component {
     };
 
     return (
-      <Autosuggest 
+      <Autosuggest
         suggestions={suggestions}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
@@ -90,7 +91,4 @@ class App extends React.Component {
   }
 }
 
-render(
-	<App />, 
-	document.getElementById('app')
-);
+ReactDOM.render(<App />, document.getElementById('app'));
